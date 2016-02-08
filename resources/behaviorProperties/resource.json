@@ -59,6 +59,12 @@
           "type": "number"
         }
       ]
+    },
+    "SoundCloud": {
+      "scriptId": "73",
+      "line": 0,
+      "parentBehavior": null,
+      "properties": []
     }
   }
 }

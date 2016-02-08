@@ -304,6 +304,14 @@
             "height": 1
           },
           "id": "0"
+        },
+        {
+          "type": "Behavior",
+          "config": {
+            "behaviorName": "SoundCloud",
+            "propertyValues": {}
+          },
+          "id": "1"
         }
       ],
       "position": {

@@ -74,9 +74,21 @@
         ]
       },
       {
-        "id": "22",
-        "name": "PlatformTest",
-        "type": "script"
+        "id": "72",
+        "name": "Tests",
+        "type": null,
+        "children": [
+          {
+            "id": "22",
+            "name": "PlatformTest",
+            "type": "script"
+          },
+          {
+            "id": "73",
+            "name": "SoundCloud",
+            "type": "script"
+          }
+        ]
       }
     ]
   },
