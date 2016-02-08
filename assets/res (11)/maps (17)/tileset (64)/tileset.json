@@ -1,0 +1,154 @@
+{
+  "formatVersion": 1,
+  "grid": {
+    "width": 20,
+    "height": 20
+  },
+  "tileProperties": {
+    "4_0": {
+      "physic": "box",
+      "trile": "top",
+      "type": "grass"
+    },
+    "4_1": {
+      "physic": "box",
+      "trile": "ground",
+      "type": "grass"
+    },
+    "1_1": {
+      "directions": "nswe"
+    },
+    "1_0": {
+      "directions": "swe"
+    },
+    "0_1": {
+      "directions": "nse"
+    },
+    "2_1": {
+      "directions": "nsw"
+    },
+    "1_2": {
+      "directions": "nwe"
+    },
+    "0_0": {
+      "directions": "se"
+    },
+    "2_0": {
+      "directions": "sw"
+    },
+    "0_2": {
+      "directions": "ne"
+    },
+    "2_2": {
+      "directions": "nw"
+    },
+    "3_0": {
+      "directions": "s"
+    },
+    "3_1": {
+      "directions": "ns"
+    },
+    "3_2": {
+      "directions": "n"
+    },
+    "3_3": {
+      "directions": "0"
+    },
+    "0_3": {
+      "directions": "e"
+    },
+    "1_3": {
+      "directions": "we"
+    },
+    "2_3": {
+      "directions": "w"
+    },
+    "4_2": {
+      "physic": "slope",
+      "type": "grass",
+      "trile": "slope",
+      "orientation": "-90"
+    },
+    "4_3": {
+      "physic": "slope",
+      "type": "grass",
+      "trile": "slope",
+      "orientation": "0"
+    },
+    "4_4": {
+      "physic": "slope",
+      "trile": "slope",
+      "type": "grass",
+      "orientation": "90"
+    },
+    "4_5": {
+      "type": "grass",
+      "trile": "slope",
+      "orientation": "180",
+      "physic": "slope"
+    },
+    "4_6": {
+      "physic": "box",
+      "type": "grass",
+      "trile": "path_straight",
+      "orientation": "0"
+    },
+    "4_7": {
+      "physic": "box",
+      "type": "grass",
+      "trile": "path_straight",
+      "orientation": "90"
+    },
+    "4_8": {
+      "orientation": "90",
+      "type": "grass",
+      "trile": "path_curve",
+      "physic": "box"
+    },
+    "4_9": {
+      "orientation": "180",
+      "trile": "path_curve",
+      "type": "grass",
+      "physic": "box"
+    },
+    "4_10": {
+      "type": "grass",
+      "orientation": "-90",
+      "trile": "path_curve",
+      "physic": "box"
+    },
+    "4_11": {
+      "type": "grass",
+      "physic": "box",
+      "trile": "path_curve",
+      "orientation": "0"
+    },
+    "0_4": {
+      "physic": "box"
+    },
+    "4_12": {
+      "orientation": "-90",
+      "type": "grass",
+      "trile": "path_slope",
+      "physic": "slope"
+    },
+    "4_13": {
+      "orientation": "0",
+      "trile": "path_slope",
+      "type": "grass",
+      "physic": "slope"
+    },
+    "4_14": {
+      "orientation": "90",
+      "physic": "slope",
+      "trile": "path_slope",
+      "type": "grass"
+    },
+    "4_15": {
+      "trile": "path_slope",
+      "type": "grass",
+      "physic": "slope",
+      "orientation": "180"
+    }
+  }
+}

@@ -1,0 +1,330 @@
+{
+  "formatVersion": 1,
+  "nodes": [
+    {
+      "id": "1",
+      "name": "Building",
+      "children": [],
+      "components": [],
+      "position": {
+        "x": -24.4384708404541,
+        "y": -5,
+        "z": 0
+      },
+      "orientation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "visible": true,
+      "layer": 0,
+      "prefab": {
+        "sceneAssetId": "20"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Player",
+      "children": [],
+      "components": [],
+      "position": {
+        "x": -21.972280502319336,
+        "y": 6.6785502433776855,
+        "z": 2.595731735229492
+      },
+      "orientation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "visible": true,
+      "layer": 0,
+      "prefab": {
+        "sceneAssetId": "14"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Building2",
+      "children": [],
+      "components": [],
+      "position": {
+        "x": -33.19838333129883,
+        "y": 15.251742362976074,
+        "z": -20.872547149658203
+      },
+      "orientation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "visible": true,
+      "layer": 0,
+      "prefab": {
+        "sceneAssetId": "20"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Building3",
+      "children": [],
+      "components": [],
+      "position": {
+        "x": -6.152735710144043,
+        "y": -5.158774375915527,
+        "z": -39.44856262207031
+      },
+      "orientation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "visible": true,
+      "layer": 0,
+      "prefab": {
+        "sceneAssetId": "20"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Building4",
+      "children": [],
+      "components": [],
+      "position": {
+        "x": 24.558244705200195,
+        "y": -0.03195258602499962,
+        "z": -1.6843891143798828
+      },
+      "orientation": {
+        "x": 0,
+        "y": 0,
+        "z": 0.182649034551354,
+        "w": 0.983178183201732
+      },
+      "scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "visible": true,
+      "layer": 0,
+      "prefab": {
+        "sceneAssetId": "20"
+      }
+    },
+    {
+      "id": "6",
+      "name": "platform",
+      "children": [],
+      "components": [
+        {
+          "type": "ModelRenderer",
+          "config": {
+            "modelAssetId": "18",
+            "animationId": null,
+            "castShadow": false,
+            "receiveShadow": false,
+            "color": "ffffff",
+            "overrideOpacity": false,
+            "opacity": null,
+            "materialType": "basic",
+            "shaderAssetId": null
+          },
+          "id": "0"
+        },
+        {
+          "type": "CannonBody",
+          "config": {
+            "mass": 0,
+            "fixedRotation": false,
+            "offset": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "shape": "box",
+            "halfSize": {
+              "x": 10,
+              "y": 10,
+              "z": 10
+            },
+            "radius": 1,
+            "height": 1
+          },
+          "id": "1"
+        },
+        {
+          "type": "Behavior",
+          "config": {
+            "behaviorName": "PlatformTestBehavior",
+            "propertyValues": {}
+          },
+          "id": "2"
+        }
+      ],
+      "position": {
+        "x": -12.964393615722656,
+        "y": -4.137791156768799,
+        "z": -20.017995834350586
+      },
+      "orientation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "visible": true,
+      "layer": 0,
+      "prefab": null
+    },
+    {
+      "id": "7",
+      "name": "Building5",
+      "children": [],
+      "components": [],
+      "position": {
+        "x": -44.62223815917969,
+        "y": -5,
+        "z": 12.746842384338379
+      },
+      "orientation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "visible": true,
+      "layer": 0,
+      "prefab": {
+        "sceneAssetId": "20"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Map",
+      "children": [],
+      "components": [
+        {
+          "type": "TileMapRenderer",
+          "config": {
+            "tileMapAssetId": "66",
+            "tileSetAssetId": null,
+            "castShadow": false,
+            "receiveShadow": false,
+            "materialType": "basic",
+            "shaderAssetId": null
+          },
+          "id": "0"
+        },
+        {
+          "type": "Behavior",
+          "config": {
+            "behaviorName": "GenerateMap",
+            "propertyValues": {}
+          },
+          "id": "1"
+        }
+      ],
+      "position": {
+        "x": -16.154096603393555,
+        "y": 0,
+        "z": 36.862144470214844
+      },
+      "orientation": {
+        "x": -0.7071067811865475,
+        "y": 0,
+        "z": 0,
+        "w": 0.7071067811865476
+      },
+      "scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "visible": true,
+      "layer": 0,
+      "prefab": null
+    },
+    {
+      "id": "10",
+      "name": "Actor",
+      "children": [],
+      "components": [
+        {
+          "type": "CannonBody",
+          "config": {
+            "mass": 0,
+            "fixedRotation": true,
+            "offset": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "shape": "cylinder",
+            "halfSize": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.5
+            },
+            "radius": 1,
+            "height": 1
+          },
+          "id": "0"
+        }
+      ],
+      "position": {
+        "x": -0.6798421740531921,
+        "y": 5.372913837432861,
+        "z": -38.449928283691406
+      },
+      "orientation": {
+        "x": -0.7071067811865475,
+        "y": 0,
+        "z": 0,
+        "w": 0.7071067811865476
+      },
+      "scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "visible": true,
+      "layer": 0,
+      "prefab": null
+    }
+  ]
+}

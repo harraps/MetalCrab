@@ -1,0 +1,219 @@
+[
+  {
+    "id": "2",
+    "name": "src",
+    "type": null,
+    "children": [
+      {
+        "id": "15",
+        "name": "Game",
+        "type": "script"
+      },
+      {
+        "id": "21",
+        "name": "Util",
+        "type": "script"
+      },
+      {
+        "id": "3",
+        "name": "player",
+        "type": null,
+        "children": [
+          {
+            "id": "4",
+            "name": "Controller",
+            "type": "script"
+          },
+          {
+            "id": "5",
+            "name": "Input",
+            "type": "script"
+          },
+          {
+            "id": "8",
+            "name": "Status",
+            "type": "script"
+          },
+          {
+            "id": "10",
+            "name": "Look",
+            "type": "script"
+          },
+          {
+            "id": "6",
+            "name": "Move",
+            "type": "script"
+          },
+          {
+            "id": "7",
+            "name": "Ground",
+            "type": "script"
+          },
+          {
+            "id": "23",
+            "name": "Crounch",
+            "type": "script"
+          },
+          {
+            "id": "24",
+            "name": "Wall",
+            "type": "script"
+          }
+        ]
+      },
+      {
+        "id": "58",
+        "name": "maps",
+        "type": null,
+        "children": [
+          {
+            "id": "59",
+            "name": "GenerateMap",
+            "type": "script"
+          }
+        ]
+      },
+      {
+        "id": "22",
+        "name": "PlatformTest",
+        "type": "script"
+      }
+    ]
+  },
+  {
+    "id": "11",
+    "name": "res",
+    "type": null,
+    "children": [
+      {
+        "id": "16",
+        "name": "player",
+        "type": null,
+        "children": []
+      },
+      {
+        "id": "29",
+        "name": "triles",
+        "type": null,
+        "children": [
+          {
+            "id": "70",
+            "name": "grass",
+            "type": null,
+            "children": [
+              {
+                "id": "62",
+                "name": "top",
+                "type": "model"
+              },
+              {
+                "id": "63",
+                "name": "ground",
+                "type": "model"
+              },
+              {
+                "id": "69",
+                "name": "slope",
+                "type": "model"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "17",
+        "name": "maps",
+        "type": null,
+        "children": [
+          {
+            "id": "18",
+            "name": "building",
+            "type": "model"
+          },
+          {
+            "id": "64",
+            "name": "tileset",
+            "type": "tileSet"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "12",
+    "name": "prefab",
+    "type": null,
+    "children": [
+      {
+        "id": "13",
+        "name": "player",
+        "type": null,
+        "children": [
+          {
+            "id": "14",
+            "name": "Player",
+            "type": "scene"
+          }
+        ]
+      },
+      {
+        "id": "19",
+        "name": "maps",
+        "type": null,
+        "children": [
+          {
+            "id": "20",
+            "name": "Building",
+            "type": "scene"
+          },
+          {
+            "id": "61",
+            "name": "triles",
+            "type": null,
+            "children": [
+              {
+                "id": "67",
+                "name": "Grass",
+                "type": "scene"
+              },
+              {
+                "id": "68",
+                "name": "Ground",
+                "type": "scene"
+              },
+              {
+                "id": "71",
+                "name": "Slope",
+                "type": "scene"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "1",
+    "name": "Scene",
+    "type": "scene"
+  },
+  {
+    "id": "28",
+    "name": "levels",
+    "type": null,
+    "children": [
+      {
+        "id": "65",
+        "name": "level0",
+        "type": null,
+        "children": [
+          {
+            "id": "66",
+            "name": "map",
+            "type": "tileMap"
+          }
+        ]
+      }
+    ]
+  }
+]

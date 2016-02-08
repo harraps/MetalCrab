@@ -1,0 +1,64 @@
+{
+  "behaviors": {
+    "PlayerController": {
+      "scriptId": "4",
+      "line": 0,
+      "parentBehavior": null,
+      "properties": [
+        {
+          "name": "keyboard",
+          "type": "string"
+        },
+        {
+          "name": "health",
+          "type": "number"
+        },
+        {
+          "name": "regen",
+          "type": "number"
+        },
+        {
+          "name": "sensibility",
+          "type": "number"
+        },
+        {
+          "name": "speed",
+          "type": "number"
+        },
+        {
+          "name": "jump",
+          "type": "number"
+        },
+        {
+          "name": "airControl",
+          "type": "number"
+        },
+        {
+          "name": "crounchHeight",
+          "type": "number"
+        },
+        {
+          "name": "crounchSpeed",
+          "type": "number"
+        }
+      ]
+    },
+    "PlatformTestBehavior": {
+      "scriptId": "22",
+      "line": 0,
+      "parentBehavior": null,
+      "properties": []
+    },
+    "GenerateMap": {
+      "scriptId": "59",
+      "line": 0,
+      "parentBehavior": null,
+      "properties": [
+        {
+          "name": "reservedLayers",
+          "type": "number"
+        }
+      ]
+    }
+  }
+}
