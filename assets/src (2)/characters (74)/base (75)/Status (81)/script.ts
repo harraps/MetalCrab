@@ -1,4 +1,4 @@
-class BaseStatus extends BaseAttribute {
+abstract class BaseStatus extends BaseAttribute {
     
 
     update() {

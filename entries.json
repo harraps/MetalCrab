@@ -62,12 +62,6 @@
             ]
           },
           {
-            "id": "76",
-            "name": "enemy",
-            "type": null,
-            "children": []
-          },
-          {
             "id": "3",
             "name": "player",
             "type": null,
@@ -93,26 +87,17 @@
                 "type": "script"
               },
               {
-                "id": "6",
-                "name": "Move",
-                "type": "script"
-              },
-              {
-                "id": "7",
-                "name": "Ground",
-                "type": "script"
-              },
-              {
-                "id": "23",
-                "name": "Crounch",
-                "type": "script"
-              },
-              {
                 "id": "24",
                 "name": "Wall",
                 "type": "script"
               }
             ]
+          },
+          {
+            "id": "76",
+            "name": "enemy",
+            "type": null,
+            "children": []
           },
           {
             "id": "77",

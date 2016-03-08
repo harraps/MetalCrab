@@ -1,4 +1,4 @@
-class PlayerWall extends PlayerAttribute {
+class PlayerWall extends BaseAttribute {
     
     protected direction   : CANNON.Vec3; // the direction of the contact from the central axis of the player
     protected normal      : CANNON.Vec3; // the normal of the contact point
@@ -6,8 +6,8 @@ class PlayerWall extends PlayerAttribute {
     protected walled      : boolean;
     protected orientation : number;
     
-    public init( controller : PlayerController ) {
-        super.init( controller );
+    public constructor( controller : PlayerController ) {
+        super( controller );
         this.walled = false;
         this.ctrl.Body.addEventListener("collide",(event) =>{
             // event has the following attributes:

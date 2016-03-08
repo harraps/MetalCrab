@@ -74,7 +74,36 @@
       "scriptId": "80",
       "line": 0,
       "parentBehavior": null,
-      "properties": []
+      "properties": [
+        {
+          "name": "health",
+          "type": "number"
+        },
+        {
+          "name": "speed",
+          "type": "number"
+        },
+        {
+          "name": "jump",
+          "type": "number"
+        },
+        {
+          "name": "airControl",
+          "type": "number"
+        },
+        {
+          "name": "steepSlope",
+          "type": "number"
+        },
+        {
+          "name": "crounchHeight",
+          "type": "number"
+        },
+        {
+          "name": "crounchSpeed",
+          "type": "number"
+        }
+      ]
     },
     "BaseStatus": {
       "scriptId": "81",

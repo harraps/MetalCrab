@@ -1,4 +1,4 @@
-class BaseLook extends BaseAttribute {
+abstract class BaseLook extends BaseAttribute {
     
     protected angle  : Sup.Math.Vector2;
     

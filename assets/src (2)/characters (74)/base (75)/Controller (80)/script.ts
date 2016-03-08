@@ -73,13 +73,6 @@ abstract class BaseController extends Sup.Behavior {
         this.anchor   = this.actor.getChild("anchor");
         //this.head     = this.actor.getChild("head");
         
-        // we initialize each module of the player
-        this.status  = new BaseStatus (this);
-        this.look    = new BaseLook   (this);
-        this.move    = new BaseMove   (this);
-        this.ground  = new BaseGround (this);
-        this.crounch = new BaseCrounch(this);
-        
         // we setup the collider of the player
         this.body.material = BASEMATERIAL;
         
@@ -99,16 +92,8 @@ abstract class BaseController extends Sup.Behavior {
         // the second vertice of the collider is the top right one
         this.centerVertices[2] = this.collider.vertices[1].clone();
         this.centerVertices[2].x = 0; // we move the vertice to the center
-    }
-    
-    update() {
-        this.status .update();
-        this.ground .update();
-        this.look   .update();
-        this.move   .update();
-        this.crounch.update();
-        // call after the velocities have been applied !
-        this.ground.updatePlatform();
+        
+        // we initialize each module of the character then
     }
     
     // this function allow us to change the height of the collider (for crounching)

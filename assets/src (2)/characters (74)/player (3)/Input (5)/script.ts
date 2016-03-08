@@ -1,4 +1,4 @@
-class PlayerInput extends PlayerAttribute {
+class PlayerInput extends BaseAttribute {
     
     public forward  : string = "W";
     public backward : string = "S";
@@ -13,11 +13,11 @@ class PlayerInput extends PlayerAttribute {
     
     protected jumpCounter : number;
     
-    public init(controller : PlayerController){
-        super.init(controller);
+    public constructor(controller : PlayerController){
+        super(controller);
         
         // we change the input based on the selected keyboard layout
-        switch( this.ctrl.keyboard ){
+        switch( controller.keyboard ){
             case "QWERTY":
             case "QWERTZ":
                 break;
