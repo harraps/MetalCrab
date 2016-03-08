@@ -22,15 +22,15 @@ class PlayerLook extends PlayerAttribute {
         this.angle.x %= Util.TAU;
         
         // we rotate the camera vertically
-        this.ctrl.Camera.rotateLocalEulerX( delta.y * this.ctrl.sensibility );
+        this.ctrl.Head.rotateLocalEulerX( delta.y * this.ctrl.sensibility );
         this.angle.y += delta.y * this.ctrl.sensibility;
 
 
         if( this.angle.y > Util.halfPI ){
-            this.ctrl.Camera.setLocalEulerX( Util.halfPI );
+            this.ctrl.Head.setLocalEulerX( Util.halfPI );
             this.angle.y = Util.halfPI;
         } else if( this.angle.y < -Util.halfPI ){
-            this.ctrl.Camera.setLocalEulerX( -Util.halfPI );
+            this.ctrl.Head.setLocalEulerX( -Util.halfPI );
             this.angle.y = -Util.halfPI;
         }
     }

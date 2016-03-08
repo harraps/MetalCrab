@@ -15,49 +15,122 @@
         "type": "script"
       },
       {
-        "id": "3",
-        "name": "player",
+        "id": "74",
+        "name": "characters",
         "type": null,
         "children": [
           {
-            "id": "4",
-            "name": "Controller",
-            "type": "script"
+            "id": "75",
+            "name": "base",
+            "type": null,
+            "children": [
+              {
+                "id": "80",
+                "name": "Controller",
+                "type": "script"
+              },
+              {
+                "id": "86",
+                "name": "Input",
+                "type": "script"
+              },
+              {
+                "id": "81",
+                "name": "Status",
+                "type": "script"
+              },
+              {
+                "id": "82",
+                "name": "Look",
+                "type": "script"
+              },
+              {
+                "id": "83",
+                "name": "Move",
+                "type": "script"
+              },
+              {
+                "id": "84",
+                "name": "Ground",
+                "type": "script"
+              },
+              {
+                "id": "85",
+                "name": "Crounch",
+                "type": "script"
+              }
+            ]
           },
           {
-            "id": "5",
-            "name": "Input",
-            "type": "script"
+            "id": "76",
+            "name": "enemy",
+            "type": null,
+            "children": []
           },
           {
-            "id": "8",
-            "name": "Status",
-            "type": "script"
+            "id": "3",
+            "name": "player",
+            "type": null,
+            "children": [
+              {
+                "id": "4",
+                "name": "Controller",
+                "type": "script"
+              },
+              {
+                "id": "5",
+                "name": "Input",
+                "type": "script"
+              },
+              {
+                "id": "8",
+                "name": "Status",
+                "type": "script"
+              },
+              {
+                "id": "10",
+                "name": "Look",
+                "type": "script"
+              },
+              {
+                "id": "6",
+                "name": "Move",
+                "type": "script"
+              },
+              {
+                "id": "7",
+                "name": "Ground",
+                "type": "script"
+              },
+              {
+                "id": "23",
+                "name": "Crounch",
+                "type": "script"
+              },
+              {
+                "id": "24",
+                "name": "Wall",
+                "type": "script"
+              }
+            ]
           },
           {
-            "id": "10",
-            "name": "Look",
-            "type": "script"
+            "id": "77",
+            "name": "basecrab",
+            "type": null,
+            "children": []
           },
           {
-            "id": "6",
-            "name": "Move",
-            "type": "script"
+            "id": "79",
+            "name": "playercrab",
+            "type": null,
+            "children": []
           },
           {
-            "id": "7",
-            "name": "Ground",
-            "type": "script"
-          },
-          {
-            "id": "23",
-            "name": "Crounch",
-            "type": "script"
-          },
-          {
-            "id": "24",
-            "name": "Wall",
-            "type": "script"
+            "id": "78",
+            "name": "enemycrab",
+            "type": null,
+            "children": []
           }
         ]
       },

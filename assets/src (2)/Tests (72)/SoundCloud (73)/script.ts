@@ -13,7 +13,7 @@ class SoundCloud extends Sup.Behavior {
                     
                 }else{
                     SoundCloud.SC.stream('/tracks/'+url.id, function(sound){
-                        sound.start();
+                        //sound.start();
                     });
                 }
             }

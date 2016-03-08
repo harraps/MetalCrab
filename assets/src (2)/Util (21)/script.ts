@@ -93,12 +93,26 @@ let Util = {
         return Util.createIRay( Util.getCannonVec(from), Util.getCannonVec(to), filter );
     },
     // this function can be used for ground or ceilling detection
-    checkCollision( ray : CANNON.Ray, vertice : CANNON.Vec3, padding_contact : number = -0.5, padding_emit : number = 0.1 ) : boolean{
+    checkCollision( ray : CANNON.Ray, vertice : CANNON.Vec3, angle : number = null,  padding_contact : number = -0.5, padding_emit : number = 0.1 ) : boolean{
         vertice = vertice.clone();
         let contact = vertice.clone();
         // we add padding to both vector
         vertice.y += padding_emit;
         contact.y += padding_contact;
-        return ray.intersectWorld( WORLD, Util.createIRay( vertice, contact ) );
+        // we perform the raycast
+        ray.intersectWorld( WORLD, Util.createIRay( vertice, contact ) );
+        // if we didn't specified an angle
+        if( angle == null ){
+            return ray.hasHit;
+        }else{
+            // if the raycast has hit
+            if( ray.hasHit ){
+                // we compare the hit normal to the vector up
+                let normal = Util.getSupVec(ray.result.hitNormalWorld).angleTo(Sup.Math.Vector3.up());
+                // if the angle from the normal to the vector up is lower than the angle we gave
+                return(normal < angle);
+            }
+        }
+        return false;
     }
 };

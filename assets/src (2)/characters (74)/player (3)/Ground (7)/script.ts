@@ -17,7 +17,7 @@ class PlayerGround extends PlayerAttribute {
         super.init(controller);
         
         // we add the PlayerGround to the list to support moving platforms
-        PLAYERGROUNDS.push(this);
+        //BASEGROUNDS.push(this);
     }
     
     public update(){
@@ -83,7 +83,7 @@ class PlayerGround extends PlayerAttribute {
         contact.y += vertice.z;
         contact.z -= vertice.y;
         // we check for collisions with the ground
-        if( Util.checkCollision( ray, contact, -0.5 ) ){
+        if( Util.checkCollision( ray, contact, this.ctrl.steepSlope, -0.5 ) ){
             // at least one contact returned true
             this.grounded = true;
             // if the platform we landed on is KINEMATIC

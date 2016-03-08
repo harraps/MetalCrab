@@ -20,8 +20,8 @@ let WORLD = Sup.Cannon.getWorld();
 WORLD.gravity.set( 0, -6000/Sup.Game.getFPS(), 0 );
 WORLD.defaultContactMaterial.friction = 0.1;
 
-let PLAYERMATERIAL = new CANNON.Material("playerMaterial");
-WORLD.addContactMaterial(new CANNON.ContactMaterial(PLAYERMATERIAL, WORLD.defaultMaterial, {
+let BASEMATERIAL = new CANNON.Material("baseMaterial");
+WORLD.addContactMaterial(new CANNON.ContactMaterial(BASEMATERIAL, WORLD.defaultMaterial, {
     friction: 0,
     restitution: 0,
     contactEquationStiffness: 1e8,
@@ -29,14 +29,14 @@ WORLD.addContactMaterial(new CANNON.ContactMaterial(PLAYERMATERIAL, WORLD.defaul
 }));
 
 // we create a list of the PlayerGrounds we have to update (to support moving platforms)
-let PLAYERGROUNDS : PlayerGround[] = [];
+let BASEGROUNDS : BaseGround[] = [];
 // we extends the behavior of CANNON.world to update the PlayerGrounds before the velocites are applied
 (function (){
     var oldPrototype = WORLD.step.prototype;
     var oldStep = WORLD.step;
     WORLD.step = function(){
         // we update the PlayerGrounds
-        for( let ground of PLAYERGROUNDS ){
+        for( let ground of BASEGROUNDS ){
             ground.updatePosition();
         }
         // we execute the default behavior of CANNON.world

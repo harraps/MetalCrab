@@ -86,7 +86,7 @@ class PlayerCrounch extends PlayerAttribute {
         contact.y += vertice.z;
         contact.z -= vertice.y;
         // we check for collisions with the ground
-        if( Util.checkCollision( ray, contact, this.height - this.defaultHeight, -0.1 ) ){
+        if( Util.checkCollision( ray, contact, null, this.height - this.defaultHeight, -0.1 ) ){
             // we found at least one contact point, we don't need to check the others
             return true;
         }

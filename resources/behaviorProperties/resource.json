@@ -34,6 +34,10 @@
           "type": "number"
         },
         {
+          "name": "steepSlope",
+          "type": "number"
+        },
+        {
           "name": "crounchHeight",
           "type": "number"
         },
@@ -62,6 +66,48 @@
     },
     "SoundCloud": {
       "scriptId": "73",
+      "line": 0,
+      "parentBehavior": null,
+      "properties": []
+    },
+    "BaseController": {
+      "scriptId": "80",
+      "line": 0,
+      "parentBehavior": null,
+      "properties": []
+    },
+    "BaseStatus": {
+      "scriptId": "81",
+      "line": 0,
+      "parentBehavior": "BaseController",
+      "properties": []
+    },
+    "LookBehavior": {
+      "scriptId": "82",
+      "line": 0,
+      "parentBehavior": null,
+      "properties": []
+    },
+    "MoveBehavior": {
+      "scriptId": "83",
+      "line": 0,
+      "parentBehavior": null,
+      "properties": []
+    },
+    "GroundBehavior": {
+      "scriptId": "84",
+      "line": 0,
+      "parentBehavior": null,
+      "properties": []
+    },
+    "CrounchBehavior": {
+      "scriptId": "85",
+      "line": 0,
+      "parentBehavior": null,
+      "properties": []
+    },
+    "InputBehavior": {
+      "scriptId": "86",
       "line": 0,
       "parentBehavior": null,
       "properties": []

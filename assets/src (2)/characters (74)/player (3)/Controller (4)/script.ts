@@ -3,7 +3,7 @@ class PlayerController extends Sup.Behavior {
     protected body     : CANNON.Body;
     protected collider : CANNON.Cylinder;
     protected anchor   : Sup.Actor;
-    protected camera   : Sup.Actor;
+    protected head   : Sup.Actor;
     
     public get Body() : CANNON.Body {
         return this.body;
@@ -17,28 +17,31 @@ class PlayerController extends Sup.Behavior {
     public get Anchor() : Sup.Actor {
         return this.anchor;
     }
-    public get Camera() : Sup.Actor {
-        return this.camera;
+    public get Head() : Sup.Actor {
+        return this.head;
     }
     
     // attributes Input
     public keyboard : string = "QWERTY"; // the keyboard layout of the player
 
     // attributes Status
-    public health : number = 100; // health of the player
+    public health : number = 100;  // health of the player
     public regen  : number = 10;   // how much health does the player regain in sec
     
     // attributes Look
     public sensibility : number = 0.5; // sensibility of the mouse
     
     // attributes Move
-    public speed      : number = 15; // speed of the player
-    public jump       : number = 30; // jump force of the player
+    public speed      : number = 15;  // speed of the player
+    public jump       : number = 30;  // jump force of the player
     public airControl : number = 0.8; // how much does the player regain movement control in the air
+    
+    // attributes Ground
+    public steepSlope : number = 50; // how steep is the ground the player can walk on
     
     // attributes Crounch
     public crounchHeight : number = 0.9; // height of the player when crounched
-    public crounchSpeed  : number = 5; // the speed of the player when crounched
+    public crounchSpeed  : number = 5;   // the speed of the player when crounched
 
     public input   : PlayerInput   = new PlayerInput  ();
     public status  : PlayerStatus  = new PlayerStatus ();
@@ -72,12 +75,13 @@ class PlayerController extends Sup.Behavior {
         this.speed        *= deltaTime;
         this.airControl   *= deltaTime;
         this.crounchSpeed *= deltaTime;
+        this.steepSlope *= Math.PI/180; // conversion from degree to radian
         
         // we recover the elements of the player
         this.body     = this.actor.cannonBody.body;
         this.collider = <CANNON.Cylinder>this.body.shapes[0]; // our player should only have one cylindrical collider
         this.anchor   = this.actor.getChild("anchor");
-        this.camera   = this.actor.getChild("camera");
+        this.head     = this.actor.getChild("head");
         
         // we initialize each module of the player
         this.input  .init(this);
@@ -89,7 +93,7 @@ class PlayerController extends Sup.Behavior {
         this.wall   .init(this);
         
         // we setup the collider of the player
-        this.body.material = PLAYERMATERIAL;
+        this.body.material = BASEMATERIAL;
         
         // Cylinder are made of vertices
         //   even vertices are for the bottom face

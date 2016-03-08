@@ -11,7 +11,7 @@
           "children": [
             {
               "id": "2",
-              "name": "camera",
+              "name": "head",
               "children": [],
               "components": [
                 {
