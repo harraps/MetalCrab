@@ -17,8 +17,7 @@ class PlayerController extends BaseController {
     awake() {
         super.awake();
         // we recalculate each attributes based on time
-        let deltaTime = 100 / Sup.Game.getFPS(); // in 100 fps
-        this.sensibility  *= deltaTime;
+        this.sensibility  *= DELTATIME;
         
         // we recover the elements of the player
         this.head     = this.actor.getChild("head");

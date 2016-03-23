@@ -61,10 +61,9 @@ abstract class BaseController extends Sup.Behavior {
     
     awake() {
         // we recalculate each attributes based on time
-        let deltaTime = 100 / Sup.Game.getFPS(); // in 100 fps
-        this.speed        *= deltaTime;
-        this.airControl   *= deltaTime;
-        this.crounchSpeed *= deltaTime;
+        this.speed        *= DELTATIME;
+        this.airControl   *= DELTATIME;
+        this.crounchSpeed *= DELTATIME;
         this.steepSlope   *= Math.PI/180; // conversion from degree to radian
         
         // we recover the elements of the player

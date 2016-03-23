@@ -124,7 +124,7 @@
       "orientation": "0"
     },
     "0_4": {
-      "physic": "box"
+      "directions": "se"
     },
     "4_12": {
       "orientation": "-90",
@@ -149,6 +149,54 @@
       "type": "grass",
       "physic": "slope",
       "orientation": "180"
+    },
+    "0_8": {
+      "physic": "box"
+    },
+    "1_4": {
+      "directions": "swe"
+    },
+    "2_4": {
+      "directions": "sw"
+    },
+    "3_4": {
+      "directions": "s"
+    },
+    "0_5": {
+      "directions": "nse"
+    },
+    "1_5": {
+      "directions": "nswe"
+    },
+    "2_5": {
+      "directions": "nsw"
+    },
+    "3_5": {
+      "directions": "ns"
+    },
+    "3_7": {
+      "directions": "0"
+    },
+    "3_6": {
+      "directions": "n"
+    },
+    "0_6": {
+      "directions": "ne"
+    },
+    "1_6": {
+      "directions": "nwe"
+    },
+    "2_6": {
+      "directions": "nw"
+    },
+    "0_7": {
+      "directions": "e"
+    },
+    "1_7": {
+      "directions": "we"
+    },
+    "2_7": {
+      "directions": "w"
     }
   }
 }

@@ -35,7 +35,7 @@
               ],
               "position": {
                 "x": 0,
-                "y": 0.988002598285675,
+                "y": 0.9,
                 "z": 0
               },
               "orientation": {
@@ -61,10 +61,10 @@
             "z": 0
           },
           "orientation": {
-            "x": 0.7071067811865475,
+            "x": 0,
             "y": 0,
             "z": 0,
-            "w": 0.7071067811865476
+            "w": 1
           },
           "scale": {
             "x": 1,
@@ -107,9 +107,30 @@
               "z": 0.5
             },
             "radius": 0.8,
-            "height": 2.8
+            "height": 2.8,
+            "group": 1,
+            "mask": 1,
+            "positionOffset": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "orientationOffset": {
+              "x": -90,
+              "y": 0,
+              "z": 0
+            },
+            "segments": 16
           },
           "id": "3"
+        },
+        {
+          "type": "Behavior",
+          "config": {
+            "behaviorName": "RotateCollider",
+            "propertyValues": {}
+          },
+          "id": "4"
         }
       ],
       "position": {
@@ -118,10 +139,10 @@
         "z": 0
       },
       "orientation": {
-        "x": -0.7071067811865475,
+        "x": 0,
         "y": 0,
         "z": 0,
-        "w": 0.7071067811865476
+        "w": 1
       },
       "scale": {
         "x": 1,

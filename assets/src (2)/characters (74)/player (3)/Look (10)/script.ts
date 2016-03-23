@@ -5,7 +5,7 @@ class PlayerLook extends BaseLook {
         let delta = this.ctrl.input.getMouseDelta();
         let controller = <PlayerController>this.ctrl;
         // we rotate the anchor horizontally
-        this.ctrl.Anchor.rotateLocalEulerZ( delta.x * -controller.sensibility );
+        this.ctrl.Anchor.rotateLocalEulerY( delta.x * -controller.sensibility );
         this.angle.x += delta.x * -controller.sensibility;
         this.angle.x %= Util.TAU;
         

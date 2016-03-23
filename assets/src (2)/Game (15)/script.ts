@@ -16,6 +16,8 @@ declare let window;
     }
 })();
 
+let DELTATIME = 100 / Sup.Game.getFPS(); // in 100 fps
+
 let WORLD = Sup.Cannon.getWorld();
 WORLD.gravity.set( 0, -6000/Sup.Game.getFPS(), 0 );
 WORLD.defaultContactMaterial.friction = 0.1;
@@ -44,3 +46,10 @@ let BASEGROUNDS : BaseGround[] = [];
     };
     WORLD.step.prototype = oldPrototype;
 })();
+
+// we create a variable to store our player controller
+let PLAYER  : PlayerController;
+// we create a map to store our enemies controller (the key is the id of the cannonBody)
+let ENEMIES : { number : EnemyController };
+// we create a map to store the elements that can be damaged (the key is the id of the cannonBody)
+let STATUS : { number : IStatus };

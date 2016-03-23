@@ -3,46 +3,14 @@
     "PlayerController": {
       "scriptId": "4",
       "line": 0,
-      "parentBehavior": null,
+      "parentBehavior": "BaseController",
       "properties": [
         {
           "name": "keyboard",
           "type": "string"
         },
         {
-          "name": "health",
-          "type": "number"
-        },
-        {
-          "name": "regen",
-          "type": "number"
-        },
-        {
           "name": "sensibility",
-          "type": "number"
-        },
-        {
-          "name": "speed",
-          "type": "number"
-        },
-        {
-          "name": "jump",
-          "type": "number"
-        },
-        {
-          "name": "airControl",
-          "type": "number"
-        },
-        {
-          "name": "steepSlope",
-          "type": "number"
-        },
-        {
-          "name": "crounchHeight",
-          "type": "number"
-        },
-        {
-          "name": "crounchSpeed",
           "type": "number"
         }
       ]
@@ -105,18 +73,6 @@
         }
       ]
     },
-    "BaseStatus": {
-      "scriptId": "81",
-      "line": 0,
-      "parentBehavior": "BaseController",
-      "properties": []
-    },
-    "LookBehavior": {
-      "scriptId": "82",
-      "line": 0,
-      "parentBehavior": null,
-      "properties": []
-    },
     "MoveBehavior": {
       "scriptId": "83",
       "line": 0,
@@ -135,11 +91,61 @@
       "parentBehavior": null,
       "properties": []
     },
-    "InputBehavior": {
-      "scriptId": "86",
+    "ApplyTexture": {
+      "scriptId": "88",
+      "line": 0,
+      "parentBehavior": null,
+      "properties": [
+        {
+          "name": "texture",
+          "type": "string"
+        },
+        {
+          "name": "thisActor",
+          "type": "boolean"
+        },
+        {
+          "name": "actors",
+          "type": "string"
+        }
+      ]
+    },
+    "RotateCollider": {
+      "scriptId": "108",
       "line": 0,
       "parentBehavior": null,
       "properties": []
+    },
+    "EnemyController": {
+      "scriptId": "109",
+      "line": 0,
+      "parentBehavior": "BaseController",
+      "properties": []
+    },
+    "Projectile": {
+      "scriptId": "116",
+      "line": 0,
+      "parentBehavior": null,
+      "properties": []
+    },
+    "Explosion": {
+      "scriptId": "117",
+      "line": 0,
+      "parentBehavior": null,
+      "properties": [
+        {
+          "name": "maxExpand",
+          "type": "number"
+        },
+        {
+          "name": "expandTime",
+          "type": "number"
+        },
+        {
+          "name": "dissipTime",
+          "type": "number"
+        }
+      ]
     }
   }
 }

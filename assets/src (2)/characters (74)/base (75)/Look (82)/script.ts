@@ -15,7 +15,7 @@ abstract class BaseLook extends BaseAttribute {
     public addRotation( angle : number ){
         angle %= Util.TAU;
         // we add rotation to our player
-        this.ctrl.Anchor.rotateLocalEulerZ(angle);
+        this.ctrl.Anchor.rotateLocalEulerY(angle);
         this.angle.x += angle;
     }
 }

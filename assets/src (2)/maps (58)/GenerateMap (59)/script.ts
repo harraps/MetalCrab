@@ -10,6 +10,7 @@ class GenerateMap extends Sup.Behavior {
     private trileSize : Sup.Math.XYZ;
     
     awake() {
+        
         // we add a cannonBody to the map
         new Sup.Cannon.Body(this.actor, null);
         let body : CANNON.Body = this.actor.cannonBody.body;
@@ -34,12 +35,13 @@ class GenerateMap extends Sup.Behavior {
         
         this.trileSize = {
             x: this.tileset.getGridSize().width,
-            y: 10,//tilemap.getLayersDepthOffset(),
+            y: (<any>this.tilemap).__inner.data.layerDepthOffset,
             z: this.tileset.getGridSize().height
         };
         
         // the last layer should be used for pathfinding
-        for( let y=0; y<this.tilemap.getLayerCount()-this.reservedLayers; ++y ){
+        // we cycle through layers from top to bottom
+        for( let y = this.tilemap.getLayerCount()-(this.reservedLayers+1); y>-1; --y ){
             // we cycle trough each tile of the map
             for( let x=0; x<this.tilemap.getWidth(); ++x ){
                 for( let z=0; z<this.tilemap.getHeight(); ++z ){
@@ -56,7 +58,7 @@ class GenerateMap extends Sup.Behavior {
                         // we create a new actor
                         trile = new Sup.Actor("trile");
                         // we set the model renderer with the right model ( trile... of type... )
-                        new Sup.ModelRenderer( trile, "res/triles/"+properties["type"]+"/"+properties["trile"] );
+                        new Sup.ModelRenderer( trile, "res/maps/triles/"+properties["type"]+"/"+properties["trile"] );
                         
                         // we define the position of the trile, based on the position of the tile
                         let pos = new Sup.Math.Vector3( x*this.trileSize.x, y*this.trileSize.y, -z*this.trileSize.z );
@@ -87,7 +89,7 @@ class GenerateMap extends Sup.Behavior {
                                 // now that we know the size of the collider, we can create it
                                 let halfSize = new CANNON.Vec3(
                                     ( 1 + box.point2.x - box.point1.x )*this.trileSize.x*0.5,
-                                    ( 1 + box.point2.y - box.point1.y )*this.trileSize.y*0.5,
+                                    ( 1 + box.point1.y - box.point2.y )*this.trileSize.y*0.5, // caution ! we cycle from top to bottom
                                     ( 1 + box.point2.z - box.point1.z )*this.trileSize.z*0.5
                                 );
                                 let offset = new CANNON.Vec3(
@@ -95,6 +97,7 @@ class GenerateMap extends Sup.Behavior {
                                      box.point1.y*this.trileSize.y - halfSize.y,
                                     -box.point1.z*this.trileSize.z - halfSize.z
                                 );
+                                Sup.log(box,halfSize,offset);
                                 body.addShape( new CANNON.Box( halfSize ), offset );
                                 
                             }else if( properties["physic"] === "slope" ){ // if it's of type slope
@@ -141,7 +144,7 @@ class GenerateMap extends Sup.Behavior {
                                 convexBody.quaternion.setFromEuler( 0, (orientation+180)*Math.PI/180, 0);
                                 // send collisions to every one
                                 convexBody.collisionFilterGroup = -1;
-                                convexBody.collisionFilterMask = -1;
+                                convexBody.collisionFilterMask  = -1;
                                 convexBody.fixedRotation = true;
                                 convexBody.material = WORLD.defaultMaterial;
                                 convexBody.addShape( polyhedron );
@@ -151,7 +154,6 @@ class GenerateMap extends Sup.Behavior {
                 }
             }
         }
-        
         // we're done making the map, we can remove the tilemap renderer
         this.actor.tileMapRenderer.destroy();
     }
@@ -162,7 +164,7 @@ class GenerateMap extends Sup.Behavior {
             point1: pos, // this value shouldn't change
             point2: {
                 x: this.tilemap.getWidth()-1,
-                y: this.tilemap.getLayerCount()-(this.reservedLayers+1), // last layer is reserved
+                y: 0, // we go from top to bottom
                 z: this.tilemap.getHeight()-1
             },
         };
@@ -188,13 +190,13 @@ class GenerateMap extends Sup.Behavior {
             }
         }
         // and finally the y-axis, ( we already know the first layer is of type box )
-        for( let y=pos.y+1; y<=box.point2.y; ++y ){
+        for( let y=pos.y-1; y>=box.point2.y; --y ){
             for( let z=pos.z; z<=box.point2.z; ++z ){
                 for( let x=pos.x; x<=box.point2.x; ++x ){
                     // if one tile of the layer is not of type box
                     if( !this.checkPhysicBox( { x: x, y: y, z: z } ) ){
                         // we adapt the collider zone
-                        box.point2.y = y-1;
+                        box.point2.y = y+1;
                         return box; // we can directly return the box
                     }
                 }

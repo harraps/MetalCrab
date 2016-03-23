@@ -1,4 +1,4 @@
-class PlayerInput extends BaseAttribute {
+class PlayerInput extends BaseInput {
     
     public forward  : string = "W";
     public backward : string = "S";

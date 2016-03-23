@@ -10,9 +10,52 @@
         "type": "script"
       },
       {
-        "id": "21",
-        "name": "Util",
+        "id": "111",
+        "name": "Interfaces",
         "type": "script"
+      },
+      {
+        "id": "112",
+        "name": "arms",
+        "type": null,
+        "children": [
+          {
+            "id": "110",
+            "name": "weapons",
+            "type": null,
+            "children": [
+              {
+                "id": "115",
+                "name": "AbscractWeapon",
+                "type": "script"
+              }
+            ]
+          },
+          {
+            "id": "113",
+            "name": "projectiles",
+            "type": null,
+            "children": [
+              {
+                "id": "116",
+                "name": "Projectile",
+                "type": "script"
+              }
+            ]
+          },
+          {
+            "id": "114",
+            "name": "explosions",
+            "type": null,
+            "children": [
+              {
+                "id": "117",
+                "name": "Explosion",
+                "type": "script"
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "74",
@@ -97,7 +140,13 @@
             "id": "76",
             "name": "enemy",
             "type": null,
-            "children": []
+            "children": [
+              {
+                "id": "109",
+                "name": "EnemyController",
+                "type": "script"
+              }
+            ]
           },
           {
             "id": "77",
@@ -147,6 +196,28 @@
             "type": "script"
           }
         ]
+      },
+      {
+        "id": "87",
+        "name": "Util",
+        "type": null,
+        "children": [
+          {
+            "id": "21",
+            "name": "Util",
+            "type": "script"
+          },
+          {
+            "id": "88",
+            "name": "ApplyTexture",
+            "type": "script"
+          },
+          {
+            "id": "108",
+            "name": "RotateCollider",
+            "type": "script"
+          }
+        ]
       }
     ]
   },
@@ -155,41 +226,6 @@
     "name": "res",
     "type": null,
     "children": [
-      {
-        "id": "16",
-        "name": "player",
-        "type": null,
-        "children": []
-      },
-      {
-        "id": "29",
-        "name": "triles",
-        "type": null,
-        "children": [
-          {
-            "id": "70",
-            "name": "grass",
-            "type": null,
-            "children": [
-              {
-                "id": "62",
-                "name": "top",
-                "type": "model"
-              },
-              {
-                "id": "63",
-                "name": "ground",
-                "type": "model"
-              },
-              {
-                "id": "69",
-                "name": "slope",
-                "type": "model"
-              }
-            ]
-          }
-        ]
-      },
       {
         "id": "17",
         "name": "maps",
@@ -204,6 +240,144 @@
             "id": "64",
             "name": "tileset",
             "type": "tileSet"
+          },
+          {
+            "id": "29",
+            "name": "triles",
+            "type": null,
+            "children": [
+              {
+                "id": "70",
+                "name": "grass",
+                "type": null,
+                "children": [
+                  {
+                    "id": "62",
+                    "name": "top",
+                    "type": "model"
+                  },
+                  {
+                    "id": "63",
+                    "name": "ground",
+                    "type": "model"
+                  },
+                  {
+                    "id": "69",
+                    "name": "slope",
+                    "type": "model"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "89",
+        "name": "characters",
+        "type": null,
+        "children": [
+          {
+            "id": "16",
+            "name": "player",
+            "type": null,
+            "children": []
+          },
+          {
+            "id": "90",
+            "name": "enemy",
+            "type": null,
+            "children": [
+              {
+                "id": "107",
+                "name": "model",
+                "type": "model"
+              },
+              {
+                "id": "93",
+                "name": "default",
+                "type": "sprite"
+              },
+              {
+                "id": "101",
+                "name": "red",
+                "type": "sprite"
+              },
+              {
+                "id": "102",
+                "name": "yellow",
+                "type": "sprite"
+              },
+              {
+                "id": "103",
+                "name": "green",
+                "type": "sprite"
+              },
+              {
+                "id": "104",
+                "name": "blue",
+                "type": "sprite"
+              },
+              {
+                "id": "105",
+                "name": "purple",
+                "type": "sprite"
+              },
+              {
+                "id": "106",
+                "name": "gray",
+                "type": "sprite"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "92",
+        "name": "mechas",
+        "type": null,
+        "children": [
+          {
+            "id": "91",
+            "name": "crabs",
+            "type": null,
+            "children": [
+              {
+                "id": "94",
+                "name": "default",
+                "type": "sprite"
+              },
+              {
+                "id": "96",
+                "name": "red",
+                "type": "sprite"
+              },
+              {
+                "id": "99",
+                "name": "yellow",
+                "type": "sprite"
+              },
+              {
+                "id": "98",
+                "name": "green",
+                "type": "sprite"
+              },
+              {
+                "id": "95",
+                "name": "blue",
+                "type": "sprite"
+              },
+              {
+                "id": "100",
+                "name": "purple",
+                "type": "sprite"
+              },
+              {
+                "id": "97",
+                "name": "gray",
+                "type": "sprite"
+              }
+            ]
           }
         ]
       }
