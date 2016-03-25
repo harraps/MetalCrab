@@ -1,12 +1,16 @@
-abstract class BaseStatus extends BaseAttribute implements IStatus {
+abstract class BaseStatus implements IAttribute, IStatus {
+    
+    public ctrl : BaseController;
     
     public health : number;
     
-    public constructor( controller : BaseController ){
-        super(controller);
+    public init( controller : BaseController ){
+        this.ctrl = controller;
         // we recover the health of the character
         this.health = this.ctrl.health;
     }
+    
+    public update(){}
     
     public damage( damage : number ){
         this.health -= damage;

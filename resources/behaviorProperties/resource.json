@@ -3,15 +3,11 @@
     "PlayerController": {
       "scriptId": "4",
       "line": 0,
-      "parentBehavior": "BaseController",
+      "parentBehavior": "CharacterController",
       "properties": [
         {
           "name": "keyboard",
           "type": "string"
-        },
-        {
-          "name": "sensibility",
-          "type": "number"
         }
       ]
     },
@@ -34,59 +30,6 @@
     },
     "SoundCloud": {
       "scriptId": "73",
-      "line": 0,
-      "parentBehavior": null,
-      "properties": []
-    },
-    "BaseController": {
-      "scriptId": "80",
-      "line": 0,
-      "parentBehavior": null,
-      "properties": [
-        {
-          "name": "health",
-          "type": "number"
-        },
-        {
-          "name": "speed",
-          "type": "number"
-        },
-        {
-          "name": "jump",
-          "type": "number"
-        },
-        {
-          "name": "airControl",
-          "type": "number"
-        },
-        {
-          "name": "steepSlope",
-          "type": "number"
-        },
-        {
-          "name": "crounchHeight",
-          "type": "number"
-        },
-        {
-          "name": "crounchSpeed",
-          "type": "number"
-        }
-      ]
-    },
-    "MoveBehavior": {
-      "scriptId": "83",
-      "line": 0,
-      "parentBehavior": null,
-      "properties": []
-    },
-    "GroundBehavior": {
-      "scriptId": "84",
-      "line": 0,
-      "parentBehavior": null,
-      "properties": []
-    },
-    "CrounchBehavior": {
-      "scriptId": "85",
       "line": 0,
       "parentBehavior": null,
       "properties": []
@@ -126,7 +69,24 @@
       "scriptId": "116",
       "line": 0,
       "parentBehavior": null,
-      "properties": []
+      "properties": [
+        {
+          "name": "speed",
+          "type": "number"
+        },
+        {
+          "name": "damage",
+          "type": "number"
+        },
+        {
+          "name": "timer",
+          "type": "number"
+        },
+        {
+          "name": "impact",
+          "type": "string"
+        }
+      ]
     },
     "Explosion": {
       "scriptId": "117",
@@ -134,7 +94,11 @@
       "parentBehavior": null,
       "properties": [
         {
-          "name": "maxExpand",
+          "name": "timer",
+          "type": "number"
+        },
+        {
+          "name": "expandMax",
           "type": "number"
         },
         {
@@ -143,6 +107,58 @@
         },
         {
           "name": "dissipTime",
+          "type": "number"
+        }
+      ]
+    },
+    "BaseInputBehavior": {
+      "scriptId": "120",
+      "line": 0,
+      "parentBehavior": null,
+      "properties": []
+    },
+    "CharacterController": {
+      "scriptId": "80",
+      "line": 0,
+      "parentBehavior": "BaseController",
+      "properties": [
+        {
+          "name": "speed",
+          "type": "number"
+        },
+        {
+          "name": "jump",
+          "type": "number"
+        },
+        {
+          "name": "airControl",
+          "type": "number"
+        },
+        {
+          "name": "steepSlope",
+          "type": "number"
+        },
+        {
+          "name": "crounchHeight",
+          "type": "number"
+        },
+        {
+          "name": "crounchSpeed",
+          "type": "number"
+        }
+      ]
+    },
+    "BaseController": {
+      "scriptId": "119",
+      "line": 0,
+      "parentBehavior": null,
+      "properties": [
+        {
+          "name": "health",
+          "type": "number"
+        },
+        {
+          "name": "sensibility",
           "type": "number"
         }
       ]

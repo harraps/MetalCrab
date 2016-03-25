@@ -1,6 +1,7 @@
-class BaseCrounch extends BaseAttribute {
+class CharacterCrounch implements IAttribute {
     
-    //private centerVertice : CANNON.Vec3;
+    public ctrl : CharacterController;
+    
     private defaultHeight : number;
     
     // we keep track of the current height of the player
@@ -12,8 +13,8 @@ class BaseCrounch extends BaseAttribute {
         return this.crounched;
     }
     
-    public constructor( controller : BaseController ){
-        super( controller );
+    public init( controller : CharacterController ){
+        this.ctrl = controller;
         // we keep track of the height of the player
         this.defaultHeight = this.ctrl.Vertices[0].z;
         this.height = this.defaultHeight;

@@ -1,5 +1,7 @@
-class BaseGround extends BaseAttribute {
-
+class CharacterGround implements IAttribute {
+    
+    public ctrl : CharacterController;
+    
     protected grounded : boolean = false;
     
     protected platform  : CANNON.Body;
@@ -13,11 +15,11 @@ class BaseGround extends BaseAttribute {
         return this.grounded;
     }
     
-    public constructor(controller : BaseController){
-        super(controller);
+    public init(controller : CharacterController){
+        this.ctrl = (controller);
         
         // we add the PlayerGround to the list to support moving platforms
-        BASEGROUNDS.push(this);
+        GAME.grounds.push(this);
     }
     
     public update(){

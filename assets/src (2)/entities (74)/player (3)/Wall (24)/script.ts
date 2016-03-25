@@ -1,4 +1,6 @@
-class PlayerWall extends BaseAttribute {
+class PlayerWall implements IAttribute {
+    
+    public ctrl : PlayerController;
     
     protected direction   : CANNON.Vec3; // the direction of the contact from the central axis of the player
     protected normal      : CANNON.Vec3; // the normal of the contact point
@@ -6,8 +8,8 @@ class PlayerWall extends BaseAttribute {
     protected walled      : boolean;
     protected orientation : number;
     
-    public constructor( controller : PlayerController ) {
-        super( controller );
+    public init( controller : PlayerController ) {
+        this.ctrl = controller;
         this.walled = false;
         this.ctrl.Body.addEventListener("collide",(event) =>{
             // event has the following attributes:
@@ -60,7 +62,7 @@ class PlayerWall extends BaseAttribute {
             let dir = origin.vadd(this.direction);
             let iray = Util.createIRay( origin, dir );
             // if we found a contact
-            if( ray.intersectWorld(WORLD, iray) ){
+            if( ray.intersectWorld(GAME.world, iray) ){
                 return true;
             }
         }

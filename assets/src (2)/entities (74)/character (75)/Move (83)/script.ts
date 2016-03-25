@@ -1,4 +1,6 @@
-class BaseMove extends BaseAttribute {
+class CharacterMove implements IAttribute {
+    
+    public ctrl : CharacterController;
     
     protected airVel : number = 0;
     protected regain : number = 0.001; // how fast does the player regain control in the air
@@ -6,6 +8,10 @@ class BaseMove extends BaseAttribute {
     // SETTER
     public set airVelocity( value : number ){
         this.airVel = value;
+    }
+    
+    public init( controller : CharacterController ){
+        this.ctrl = controller;
     }
     
     public update(){

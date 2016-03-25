@@ -1,4 +1,4 @@
-class PlayerInput extends BaseInput {
+class PlayerInput extends CharacterInput {
     
     public forward  : string = "W";
     public backward : string = "S";
@@ -13,8 +13,8 @@ class PlayerInput extends BaseInput {
     
     protected jumpCounter : number;
     
-    public constructor(controller : PlayerController){
-        super(controller);
+    public init(controller : PlayerController){
+        super.init(controller);
         
         // we change the input based on the selected keyboard layout
         switch( controller.keyboard ){

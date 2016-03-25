@@ -1,4 +1,10 @@
-abstract class BaseInput extends BaseAttribute {
+abstract class CharacterInput extends BaseInput {
+    
+    public ctrl : CharacterController;
+    
+    public init( controller : CharacterController ){
+        super.init(controller);
+    }
     
     public abstract getMouseDelta() : Sup.Math.Vector2;
     public abstract getFire1()      : boolean;

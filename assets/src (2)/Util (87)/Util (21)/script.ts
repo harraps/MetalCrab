@@ -1,8 +1,10 @@
 // we define a name space
 let Util = {
     
-    TAU    : Math.PI*2,   // TAU is just the double of PI
-    halfPI : Math.PI*0.5, // this is a shortcut since we often need this value
+    deltaTime : 100 / Sup.Game.getFPS(), // return the time passed for 100 frames -> normalize speed variables
+    
+    TAU       : Math.PI*2,   // TAU is just the double of PI
+    halfPI    : Math.PI*0.5, // this is a shortcut since we often need this value
     
     // Mathematic functions
     smallestAngle( a ){
@@ -65,8 +67,8 @@ let Util = {
     },
     
     bodiesAreInContact(bodyA, bodyB){
-    for(var i=0; i<WORLD.contacts.length; i++){
-        var c = WORLD.contacts[i];
+    for(var i=0; i<GAME.world.contacts.length; i++){
+        var c = GAME.world.contacts[i];
         if((c.bi === bodyA && c.bj === bodyB) || (c.bi === bodyB && c.bj === bodyA)){
             return true;
         }
@@ -100,7 +102,7 @@ let Util = {
         vertice.y += padding_emit;
         contact.y += padding_contact;
         // we perform the raycast
-        ray.intersectWorld( WORLD, Util.createIRay( vertice, contact ) );
+        ray.intersectWorld( GAME.world, Util.createIRay( vertice, contact ) );
         // if we didn't specified an angle
         if( angle == null ){
             return ray.hasHit;

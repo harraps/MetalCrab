@@ -1,52 +1,36 @@
 class Explosion extends Sup.Behavior {
     
-    public maxExpand  : number = 5;
-    public expandTime : number = 2;
+    public timer      : number = 3;
+    public expandMax  : number = 5;
+    public expandTime : number = 1;
     public dissipTime : number = 1;
-    
-    private timer : number;
-    private expansion   : number;
-    private dissipation : number;
     
     protected expandRate : number;
     protected dissipRate : number;
-
+    
     awake() {
         // we adapt the time based variables
-        this.expandTime *= DELTATIME;
-        this.dissipTime *= DELTATIME;
-        // we 
-        this.timer = this.expandTime + this.dissipTime;
-        this.expansion = 0.001;
-        this.dissipation = 1;
-        
-        this.expandRate = this.maxExpand / this.expandTime;
+        this.timer      *= Sup.Game.getFPS();
+        this.expandTime *= Sup.Game.getFPS();
+        this.dissipTime *= Sup.Game.getFPS();
+        // we caculate the expand rate and the dissipation rate
+        this.expandRate = this.expandMax / this.expandTime;
         this.dissipRate = 1 / this.dissipTime;
-        
-        this.impluse();
     }
 
     update() {
-        // if the timer ended, the object is completely destroyed
-        if( this.timer < 0 ){
+        // expand effect
+        --this.expandTime;
+        if( this.expandTime > 0 ){ // expand time is not over yet
+            this.actor.setLocalScale( this.expandRate + this.actor.getLocalScaleX() );
+        }
+        // main timer
+        --this.timer;
+        if( this.timer < 0 ){ // timer is over
             this.actor.destroy();
+        }else if( this.timer < this.dissipTime ){ // if we're in dissipation phase
+            this.actor.modelRenderer.setOpacity( this.dissipRate + this.actor.modelRenderer.getOpacity() );
         }
-        // if we're still in expansion phase
-        if( this.timer > this.dissipTime ){
-            // we update the expansion variable
-            this.expansion += this.expandRate;
-            // we update the size of the model
-            this.actor.setLocalScale( this.expansion );
-        }else{ // we're in dissipation phase
-            // we update the dissipation variable
-            this.dissipation -= this.dissipRate;
-            // we update the opacity of our explosion
-            this.actor.modelRenderer.setOpacity( this.dissipation );
-        }
-    }
-
-    protected impluse() {
-        
     }
 }
 Sup.registerBehavior(Explosion);

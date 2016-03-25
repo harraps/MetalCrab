@@ -1,7 +1,9 @@
-abstract class AbscractWeapon extends BaseAttribute {
+abstract class AbstractWeapon implements IAttribute {
     
-    public constructor( controller : BaseController ){
-        super(controller);
+    public ctrl : BaseController;
+    
+    public init( controller : BaseController ){
+        this.ctrl = controller;
     }
     
     // set the model of the gun and put it at the right location

@@ -26,7 +26,7 @@
             "children": [
               {
                 "id": "115",
-                "name": "AbscractWeapon",
+                "name": "AbstractWeapon",
                 "type": "script"
               }
             ]
@@ -59,21 +59,21 @@
       },
       {
         "id": "74",
-        "name": "characters",
+        "name": "entities",
         "type": null,
         "children": [
           {
-            "id": "75",
+            "id": "118",
             "name": "base",
             "type": null,
             "children": [
               {
-                "id": "80",
+                "id": "119",
                 "name": "Controller",
                 "type": "script"
               },
               {
-                "id": "86",
+                "id": "120",
                 "name": "Input",
                 "type": "script"
               },
@@ -85,6 +85,23 @@
               {
                 "id": "82",
                 "name": "Look",
+                "type": "script"
+              }
+            ]
+          },
+          {
+            "id": "75",
+            "name": "character",
+            "type": null,
+            "children": [
+              {
+                "id": "80",
+                "name": "Controller",
+                "type": "script"
+              },
+              {
+                "id": "86",
+                "name": "Input",
                 "type": "script"
               },
               {
