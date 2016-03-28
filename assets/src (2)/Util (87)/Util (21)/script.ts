@@ -67,8 +67,8 @@ let Util = {
     },
     
     bodiesAreInContact(bodyA, bodyB){
-    for(var i=0; i<GAME.world.contacts.length; i++){
-        var c = GAME.world.contacts[i];
+    for(var i=0; i<GAME.level.World.contacts.length; i++){
+        var c = GAME.level.World.contacts[i];
         if((c.bi === bodyA && c.bj === bodyB) || (c.bi === bodyB && c.bj === bodyA)){
             return true;
         }
@@ -102,7 +102,7 @@ let Util = {
         vertice.y += padding_emit;
         contact.y += padding_contact;
         // we perform the raycast
-        ray.intersectWorld( GAME.world, Util.createIRay( vertice, contact ) );
+        ray.intersectWorld( GAME.level.World, Util.createIRay( vertice, contact ) );
         // if we didn't specified an angle
         if( angle == null ){
             return ray.hasHit;
@@ -117,4 +117,11 @@ let Util = {
         }
         return false;
     }
+};
+
+// we add a new function to arrays to remove elements faster
+(<any>Array.prototype).remove = function( from : number, to : number ){
+    var rest = this.slice((to || from) + 1 || this.length);
+    this.length = from < 0 ? this.length + from : from;
+    return this.push.apply(this, rest);
 };

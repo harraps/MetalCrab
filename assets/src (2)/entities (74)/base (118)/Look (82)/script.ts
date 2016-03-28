@@ -16,7 +16,7 @@ abstract class BaseLook implements IAttribute {
     
     public update(){
         // we rotate the character based on the mouse delta
-        let delta = this.ctrl.input.getMouseDelta();
+        let delta = this.ctrl.input.getLook();
         // we rotate the anchor horizontally
         this.ctrl.Anchor.rotateLocalEulerY( delta.x * -this.ctrl.sensibility );
         this.angle.x += delta.x * -this.ctrl.sensibility;

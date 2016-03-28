@@ -54,7 +54,7 @@ abstract class CharacterController extends BaseController {
         this.collider = <CANNON.Cylinder>this.body.shapes[0]; // our player should only have one cylindrical collider
         
         // we setup the collider of the player
-        this.body.material = GAME.material;
+        this.body.material = GAME.level.DefaultMaterial;
         
         // Cylinder are made of vertices
         //   even vertices are for the bottom face
@@ -93,12 +93,7 @@ abstract class CharacterController extends BaseController {
 
     public deleteCharacter(){
         // we remove the ground module from the list
-        for( let i=0; i<GAME.grounds.length; ++i ){
-            if( this.ground == GAME.grounds[i] ){
-                delete GAME.grounds[i];
-                break;
-            }
-        }
+        GAME.level.removeGroundModule(this.ground);
         
     }
 

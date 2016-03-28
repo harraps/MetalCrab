@@ -19,7 +19,7 @@ class CharacterGround implements IAttribute {
         this.ctrl = (controller);
         
         // we add the PlayerGround to the list to support moving platforms
-        GAME.grounds.push(this);
+        GAME.level.addGroundModule(this);
     }
     
     public update(){

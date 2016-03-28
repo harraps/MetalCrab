@@ -111,12 +111,6 @@
         }
       ]
     },
-    "BaseInputBehavior": {
-      "scriptId": "120",
-      "line": 0,
-      "parentBehavior": null,
-      "properties": []
-    },
     "CharacterController": {
       "scriptId": "80",
       "line": 0,

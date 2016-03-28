@@ -6,11 +6,11 @@ abstract class CharacterInput extends BaseInput {
         super.init(controller);
     }
     
-    public abstract getMouseDelta() : Sup.Math.Vector2;
-    public abstract getFire1()      : boolean;
-    public abstract getFire2()      : boolean;
-    public abstract getMove()       : Sup.Math.Vector2;
-    public abstract getJump()       : boolean;
-    public abstract getCrounch()    : boolean;
+    public abstract getLook   () : Sup.Math.Vector2;
+    public abstract getFire1  () : boolean;
+    public abstract getReload1() : boolean;
+    public abstract getMove   () : Sup.Math.Vector2;
+    public abstract getJump   () : boolean;
+    public abstract getCrounch() : boolean;
     
 }

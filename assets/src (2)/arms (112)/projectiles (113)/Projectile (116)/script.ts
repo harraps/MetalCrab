@@ -49,7 +49,7 @@ class Projectile extends Sup.Behavior {
         let iray = Util.createIRaySup( from, to, filter );
         let ray = new CANNON.Ray();
         // we check if the bullet collide with something
-        if( ray.intersectWorld( GAME.world, iray ) ){
+        if( ray.intersectWorld( GAME.level.World, iray ) ){
             return ray.result;
         }
         return null;

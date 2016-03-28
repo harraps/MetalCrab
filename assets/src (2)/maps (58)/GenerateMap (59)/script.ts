@@ -25,7 +25,7 @@ class GenerateMap extends Sup.Behavior {
         body.collisionFilterMask = -1;
         
         body.fixedRotation = true;
-        body.material = GAME.world.defaultMaterial;
+        body.material = GAME.level.World.defaultMaterial;
         
         // we create an array of bounding boxes, this will allow us to check if triles are already part of a shape
         this.boxes = [];
@@ -136,7 +136,7 @@ class GenerateMap extends Sup.Behavior {
                                 );
                                 let polyhedron = new CANNON.ConvexPolyhedron( vertices, faces);
                                 let convexBody = new CANNON.Body();
-                                GAME.world.addBody( convexBody );
+                                GAME.level.World.addBody( convexBody );
                                 convexBody.mass = 0;
                                 convexBody.type = CANNON.Body.STATIC;
                                 // we move the cannonBody to the right location
@@ -146,7 +146,7 @@ class GenerateMap extends Sup.Behavior {
                                 convexBody.collisionFilterGroup = -1;
                                 convexBody.collisionFilterMask  = -1;
                                 convexBody.fixedRotation = true;
-                                convexBody.material = GAME.world.defaultMaterial;
+                                convexBody.material = GAME.level.World.defaultMaterial;
                                 convexBody.addShape( polyhedron );
                             }
                         }

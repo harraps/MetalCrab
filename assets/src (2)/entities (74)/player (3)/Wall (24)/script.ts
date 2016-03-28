@@ -62,7 +62,7 @@ class PlayerWall implements IAttribute {
             let dir = origin.vadd(this.direction);
             let iray = Util.createIRay( origin, dir );
             // if we found a contact
-            if( ray.intersectWorld(GAME.world, iray) ){
+            if( ray.intersectWorld(GAME.level.World, iray) ){
                 return true;
             }
         }
