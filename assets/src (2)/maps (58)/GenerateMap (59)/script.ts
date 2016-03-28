@@ -2,6 +2,8 @@ class GenerateMap extends Sup.Behavior {
     
     public reservedLayers: number = 1;
     
+    private body : CANNON.Body;
+    
     private boxes : ITrileBox[];
 
     private tilemap : Sup.TileMap;
@@ -9,23 +11,26 @@ class GenerateMap extends Sup.Behavior {
     
     private trileSize : Sup.Math.XYZ;
     
-    awake() {
-        
-        // we add a cannonBody to the map
-        new Sup.Cannon.Body(this.actor, null);
-        let body : CANNON.Body = this.actor.cannonBody.body;
+    private static setUpBody( body:CANNON.Body ){
         body.mass = 0;
         body.type = CANNON.Body.STATIC;
-        
-        // we move the cannonBody to the right location
-        body.position = Util.getCannonVec( this.actor.getPosition() );
-        
-        // send collisions to every one
-        body.collisionFilterGroup = -1;
-        body.collisionFilterMask = -1;
-        
         body.fixedRotation = true;
         body.material = GAME.level.World.defaultMaterial;
+        // group and mask
+        body.collisionFilterGroup = -1;
+        body.collisionFilterMask  = -1;
+        
+        
+    }
+    
+    awake() {
+        // we add a cannonBody to the map
+        new Sup.Cannon.Body(this.actor, null);
+        this.body = this.actor.cannonBody.body;
+        GenerateMap.setUpBody(this.body);
+        
+        // we move the cannonBody to the right location
+        this.body.position = Util.getCannonVec( this.actor.getPosition() );
         
         // we create an array of bounding boxes, this will allow us to check if triles are already part of a shape
         this.boxes = [];
@@ -45,117 +50,131 @@ class GenerateMap extends Sup.Behavior {
             // we cycle trough each tile of the map
             for( let x=0; x<this.tilemap.getWidth(); ++x ){
                 for( let z=0; z<this.tilemap.getHeight(); ++z ){
-                    // we recover the tile at the position
-                    let tile = this.tilemap.getTileAt( y, x, z );
-                    
-                    let properties = this.tileset.getTileProperties( tile );
-                    
-                    // we declare our actor here, in case we need to give it its own CannonBody
-                    let trile : Sup.Actor;
-                    
-                    // if our tile has both a type and trile property
-                    if( "type" in properties && "trile" in properties ){
-                        // we create a new actor
-                        trile = new Sup.Actor("trile");
-                        // we set the model renderer with the right model ( trile... of type... )
-                        new Sup.ModelRenderer( trile, "res/maps/triles/"+properties["type"]+"/"+properties["trile"] );
-                        
-                        // we define the position of the trile, based on the position of the tile
-                        let pos = new Sup.Math.Vector3( x*this.trileSize.x, y*this.trileSize.y, -z*this.trileSize.z );
-                        // the position of the trile is relative to the position of the tilemap
-                        pos.add(this.actor.getPosition());
-                        // we center the trile to the tile
-                        pos.add( 0.5*this.trileSize.x, -0.5*this.trileSize.y, -0.5*this.trileSize.z );
-                        
-                        // we move the trile to the right position
-                        trile.setPosition( pos );
-                        
-                        // if our tile has also a orientation property
-                        if( "orientation" in properties ){
-                            trile.setEulerY( parseFloat(properties["orientation"])*Math.PI/180 );
-                        }
-                    }
-                    
-                    // if the tile has a physic property
-                    if( "physic" in properties ){
-                        let pos = {x:x, y:y, z:z};
-                        // if it hasn't a physic box already
-                        if( !this.alreadyCheckedPhysic( pos ) ){
-                            
-                            if( properties["physic"] === "box" ){ // if the physic property is of type box
-                                let box = this.createLargestBox( pos );
-                                this.boxes[this.boxes.length] = box; // we add the box to the list
-                                
-                                // now that we know the size of the collider, we can create it
-                                let halfSize = new CANNON.Vec3(
-                                    ( 1 + box.point2.x - box.point1.x )*this.trileSize.x*0.5,
-                                    ( 1 + box.point1.y - box.point2.y )*this.trileSize.y*0.5, // caution ! we cycle from top to bottom
-                                    ( 1 + box.point2.z - box.point1.z )*this.trileSize.z*0.5
-                                );
-                                let offset = new CANNON.Vec3(
-                                     box.point1.x*this.trileSize.x + halfSize.x,
-                                     box.point1.y*this.trileSize.y - halfSize.y,
-                                    -box.point1.z*this.trileSize.z - halfSize.z
-                                );
-                                Sup.log(box,halfSize,offset);
-                                body.addShape( new CANNON.Box( halfSize ), offset );
-                                
-                            }else if( properties["physic"] === "slope" ){ // if it's of type slope
-                                // we recover the orientation property (a second time for an other purpose)
-                                let orientation = "orientation" in properties ? parseFloat(properties["orientation"]) : 0;
-                                let slope = this.createLargestSlope( pos, orientation );
-                                this.boxes[this.boxes.length] = slope; // we add the slope to the list
-                                
-                                // we recover the length of the slope
-                                let length = orientation==0 || orientation==180 ? (1+slope.point2.x-slope.point1.x)*this.trileSize.x : (1+slope.point2.z-slope.point1.z)*this.trileSize.z;
-                                let halfSize : Sup.Math.XYZ = { x: length*0.5, y: this.trileSize.y*0.5, z: this.trileSize.z*0.5 };
-                                
-                                // now that we know the size of the collider, we can create it
-                                let vertices = [
-                                    // first side
-                                    new CANNON.Vec3( -halfSize.x, -halfSize.y, -halfSize.z ),
-                                    new CANNON.Vec3( -halfSize.x, -halfSize.y,  halfSize.z ),
-                                    new CANNON.Vec3( -halfSize.x,  halfSize.y,  halfSize.z ),
-                                    // second side
-                                    new CANNON.Vec3(  halfSize.x, -halfSize.y, -halfSize.z ),
-                                    new CANNON.Vec3(  halfSize.x, -halfSize.y,  halfSize.z ),
-                                    new CANNON.Vec3(  halfSize.x,  halfSize.y,  halfSize.z )
-                                ];
-                                // /!\ we have to be cautionous of the order of the vertices /!\
-                                let faces : any = [
-                                    [0,1,2], // first side
-                                    [5,4,3], // second side
-                                    [0,3,4,1],
-                                    [1,4,5,2],
-                                    [0,2,5,3]
-                                ];
-                                let offset = new CANNON.Vec3(
-                                    ( slope.point1.x + (1+slope.point2.x-slope.point1.x)*0.5)*this.trileSize.x,
-                                    ( slope.point1.y - (1+slope.point2.y-slope.point1.y)*0.5)*this.trileSize.y,
-                                    (-slope.point1.z - (1+slope.point2.z-slope.point1.z)*0.5)*this.trileSize.z
-                                );
-                                let polyhedron = new CANNON.ConvexPolyhedron( vertices, faces);
-                                let convexBody = new CANNON.Body();
-                                GAME.level.World.addBody( convexBody );
-                                convexBody.mass = 0;
-                                convexBody.type = CANNON.Body.STATIC;
-                                // we move the cannonBody to the right location
-                                convexBody.position = offset.vadd( Util.getCannonVec(this.actor.getPosition()) );
-                                convexBody.quaternion.setFromEuler( 0, (orientation+180)*Math.PI/180, 0);
-                                // send collisions to every one
-                                convexBody.collisionFilterGroup = -1;
-                                convexBody.collisionFilterMask  = -1;
-                                convexBody.fixedRotation = true;
-                                convexBody.material = GAME.level.World.defaultMaterial;
-                                convexBody.addShape( polyhedron );
-                            }
-                        }
-                    }
+                    // we generate a trile at this location
+                    let coord : Sup.Math.XYZ = { y:y, x:x, z:z };
+                    this.generateTrile( coord );
                 }
             }
         }
         // we're done making the map, we can remove the tilemap renderer
         this.actor.tileMapRenderer.destroy();
+    }
+    
+    private generateTrile( coord:Sup.Math.XYZ ){
+        // we recover the tile at the position
+        let tile = this.tilemap.getTileAt( coord.y, coord.x, coord.z );       
+        let properties = this.tileset.getTileProperties( tile );
+                    
+        this.generateVisibleTrile( coord, properties );
+        
+        this.generatePhysicTrile( coord, properties );
+    }
+    
+    // read the properties and generate a trile at the given coordinates
+    private generateVisibleTrile( coord : Sup.Math.XYZ, properties : {[key:string]:string;} ){
+        // if our tile has both a type and trile property
+        if( "type" in properties && "trile" in properties ){
+            // we create a new actor
+            let trile = new Sup.Actor("trile");
+            // we set the model renderer with the right model ( trile... of type... )
+            new Sup.ModelRenderer( trile, "res/maps/triles/"+properties["type"]+"/"+properties["trile"] );
+
+            // we define the position of the trile, based on the position of the tile
+            let pos = new Sup.Math.Vector3( coord.x*this.trileSize.x, coord.y*this.trileSize.y, -coord.z*this.trileSize.z );
+            // the position of the trile is relative to the position of the tilemap
+            pos.add(this.actor.getPosition());
+            // we center the trile to the tile
+            pos.add( 0.5*this.trileSize.x, -0.5*this.trileSize.y, -0.5*this.trileSize.z );
+
+            // we move the trile to the right position
+            trile.setPosition( pos );
+
+            // if our tile has also a orientation property
+            if( "orientation" in properties ){
+                trile.setEulerY( parseFloat(properties["orientation"])*Math.PI/180 );
+            }
+        }
+    }
+    
+    // read the properties and generate physic at the given coordinates
+    private generatePhysicTrile( coord : Sup.Math.XYZ, properties : {[key:string]:string;} ){
+        // if the tile has a physic property
+        if( "physic" in properties ){
+            let pos : Sup.Math.XYZ = {x:coord.x, y:coord.y, z:coord.z};
+            // if it hasn't a physic box already
+            if( !this.alreadyCheckedPhysic( pos ) ){
+                if( properties["physic"] === "box" ){ // if the physic property is of type box
+                    // we create the largest box possible
+                    this.generatePhysicBox(pos);
+                }else if( properties["physic"] === "slope" ){ // if it's of type slope
+                    // we create the largest slope possible
+                    this.generatePhysicSlope(pos, properties);
+                }
+            }
+        }
+    }
+    
+    // generate a physic box starting at the given location
+    private generatePhysicBox( pos : Sup.Math.XYZ ){
+        let box = this.createLargestBox( pos );
+        this.boxes[this.boxes.length] = box; // we add the box to the list
+        // now that we know the size of the collider, we can create it
+        let halfSize = new CANNON.Vec3(
+            ( 1 + box.point2.x - box.point1.x )*this.trileSize.x*0.5,
+            ( 1 + box.point1.y - box.point2.y )*this.trileSize.y*0.5, // caution ! we cycle from top to bottom
+            ( 1 + box.point2.z - box.point1.z )*this.trileSize.z*0.5
+        );
+        let offset = new CANNON.Vec3(
+             box.point1.x*this.trileSize.x + halfSize.x,
+             box.point1.y*this.trileSize.y - halfSize.y,
+            -box.point1.z*this.trileSize.z - halfSize.z
+        );
+        this.body.addShape( new CANNON.Box( halfSize ), offset );
+    }
+    
+    // generate a physic slope starting at the given location
+    private generatePhysicSlope( pos : Sup.Math.XYZ, properties : {[key:string]:string;} ){
+        // we recover the orientation property (a second time for an other purpose)
+        let orientation = "orientation" in properties ? parseFloat(properties["orientation"]) : 0;
+        let slope = this.createLargestSlope( pos, orientation );
+        this.boxes[this.boxes.length] = slope; // we add the slope to the list    
+        // we recover the length of the slope
+        let length = orientation==0 || orientation==180 ? (1+slope.point2.x-slope.point1.x)*this.trileSize.x : (1+slope.point2.z-slope.point1.z)*this.trileSize.z;
+        let halfSize : Sup.Math.XYZ = { x: length*0.5, y: this.trileSize.y*0.5, z: this.trileSize.z*0.5 };
+        
+        // now that we know the size of the collider, we can create it
+        let vertices = [
+            // first side
+            new CANNON.Vec3( -halfSize.x, -halfSize.y, -halfSize.z ),
+            new CANNON.Vec3( -halfSize.x, -halfSize.y,  halfSize.z ),
+            new CANNON.Vec3( -halfSize.x,  halfSize.y,  halfSize.z ),
+            // second side
+            new CANNON.Vec3(  halfSize.x, -halfSize.y, -halfSize.z ),
+            new CANNON.Vec3(  halfSize.x, -halfSize.y,  halfSize.z ),
+            new CANNON.Vec3(  halfSize.x,  halfSize.y,  halfSize.z )
+        ];
+        // /!\ we have to be cautionous of the order of the vertices /!\
+        let faces : any = [
+            [0,1,2], // first side
+            [5,4,3], // second side
+            [0,3,4,1],
+            [1,4,5,2],
+            [0,2,5,3]
+        ];
+        let offset = new CANNON.Vec3(
+            ( slope.point1.x + (1+slope.point2.x-slope.point1.x)*0.5)*this.trileSize.x,
+            ( slope.point1.y - (1+slope.point2.y-slope.point1.y)*0.5)*this.trileSize.y,
+            (-slope.point1.z - (1+slope.point2.z-slope.point1.z)*0.5)*this.trileSize.z
+        );
+        let polyhedron = new CANNON.ConvexPolyhedron( vertices, faces);
+        let body = new CANNON.Body();
+        GAME.level.World.addBody( body );
+        GenerateMap.setUpBody(body);
+        // we move the cannonBody to the right location
+        body.position = offset.vadd( Util.getCannonVec(this.actor.getPosition()) );
+        body.quaternion.setFromEuler( 0, (orientation+180)*Math.PI/180, 0);
+        // and we add the shape we just created
+        body.addShape( polyhedron );
     }
     
     private createLargestBox( pos: Sup.Math.XYZ ){

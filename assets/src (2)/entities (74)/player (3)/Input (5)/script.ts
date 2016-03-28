@@ -9,74 +9,6 @@ class PlayerInput extends CharacterInput {
     
     protected jumpCounter : number;
     
-    public init(controller : PlayerController){
-        super.init(controller);
-        
-        // we create a array to store our input values
-        this.inputs = [];
-        this.resetInputs();
-        
-        // we lock the mouse of the player
-        Sup.Input.lockMouse();
-        this.useMouse    = true;
-        this.isMouseLock = true;
-        
-        // we set the jump counter to 0 : the player doesn't want to jump right when spawned
-        this.jumpCounter = 0;
-    }
-    
-    public update(){
-        // we set each input value to false
-        this.resetInputs();
-        
-        // complex inputs
-        this.updateLook();
-        this.updateMove();
-        this.updateJump();
-        
-        // hold the button down
-        this.inputs["crounch"  ] = GAME.input.isInputDown("crounch");
-        this.inputs["fire1"    ] = GAME.input.isInputDown("fire1"  );
-        this.inputs["fire2"    ] = GAME.input.isInputDown("fire2"  );
-        
-        // press the button once
-        this.inputs["reload1"  ] = GAME.input.wasInputJustPressed("reload1"  );
-        this.inputs["reload2"  ] = GAME.input.wasInputJustPressed("reload2"  );
-        this.inputs["use"      ] = GAME.input.wasInputJustPressed("use"      );
-        this.inputs["inventory"] = GAME.input.wasInputJustPressed("inventory");
-    }
-    
-    private updateLook(){
-        // for each input we change the direction of the vector2
-        if( GAME.input.isInputDown("lookUp"   ) ) ++this.inputs["look"].y;
-        if( GAME.input.isInputDown("lookDown" ) ) --this.inputs["look"].y;
-        if( GAME.input.isInputDown("lookLeft" ) ) --this.inputs["look"].x;
-        if( GAME.input.isInputDown("lookRight") ) ++this.inputs["look"].x;
-    }
-    private updateMove(){
-        // for each input we change the direction of the vector2
-        if( GAME.input.isInputDown("forward" ) ) ++this.inputs["move"].y;
-        if( GAME.input.isInputDown("backward") ) --this.inputs["move"].y;
-        if( GAME.input.isInputDown("left"    ) ) --this.inputs["move"].x;
-        if( GAME.input.isInputDown("right"   ) ) ++this.inputs["move"].x;
-        
-        // if the player is going in a direction
-        if( this.inputs["move"].x !== 0 || this.inputs["move"].y !== 0 ){
-            // we normalize the vector
-            this.inputs["move"].normalize();
-        }
-    }
-    private updateJump(){
-        // we update jump input
-        if( GAME.input.wasInputJustPressed("jump") ){
-            this.jumpCounter = 1; // the player wants to jump
-        }
-        if( this.jumpCounter > 0 ){
-            this.jumpCounter -= 0.1;
-            this.inputs["jump"] = true;
-        }
-    }
-    
     public getLook() : Sup.Math.Vector2{
         return this.inputs["look"].clone();
     }
@@ -90,32 +22,110 @@ class PlayerInput extends CharacterInput {
     public getCrounch() : boolean{
         return this.inputs["crounch"];
     }
-    public getFire1() : boolean{
-        return this.inputs["fire1"];
+    public getArm1() : IArm{
+        return this.inputs["arm1"];
     }
-    public getFire2() : boolean{
-        return this.inputs["fire2"];
+    public getArm2() : IArm{
+        return this.inputs["arm2"];
     }
-    public getReload1() : boolean {
-        return this.inputs["reload1"];
+    public getFire3() : boolean{
+        return this.inputs["fire3"];
     }
-    public getReload2() : boolean {
-        return this.inputs["reload2"];
+    public getSwitch() : number {
+        return this.inputs["switch"];
+    }
+    public getUse() : boolean{
+        return this.inputs["use"];
+    }
+    public getInventory() : boolean{
+        return this.inputs["inventory"];
+    }
+
+    public init(controller : PlayerController){
+        super.init(controller);
+        
+        // we create a array to store our input values
+        this.inputs = [];
+        
+        // we lock the mouse of the player
+        Sup.Input.lockMouse();
+        this.useMouse    = true;
+        this.isMouseLock = true;
+        
+        // we set the jump counter to 0 : the player doesn't want to jump right when spawned
+        this.jumpCounter = 0;
+        
+        // we initialize object typed inputs holder
+        this.inputs["look"] = new Sup.Math.Vector2();
+        this.inputs["move"] = new Sup.Math.Vector2();
+        this.inputs["arm1"] = {};
+        this.inputs["arm2"] = {};
     }
     
-    protected resetInputs(){
-        // axis based inputs
-        this.inputs["look"] = this.useMouse ? Sup.Input.getMouseDelta() : new Sup.Math.Vector2();
-        this.inputs["move"] = new Sup.Math.Vector2();
+    public update(){
         
-        // boolean inputs
-        this.inputs["jump"     ] = false;
-        this.inputs["crounch"  ] = false;
-        this.inputs["fire1"    ] = false;
-        this.inputs["fire2"    ] = false;
-        this.inputs["reload1"  ] = false;
-        this.inputs["reload2"  ] = false;
-        this.inputs["use"      ] = false;
-        this.inputs["inventory"] = false;
+        // complex inputs
+        this.updateLook();
+        this.updateMove();
+        this.updateJump();
+        this.updateArm(1);
+        this.updateArm(2);
+        this.updateSwitch();
+        
+        this.inputs["crounch"  ] = GAME.input.isInputDown("crounch");
+        this.inputs["fire3"    ] = GAME.input.wasInputJustPressed("fire3"    );
+        this.inputs["use"      ] = GAME.input.wasInputJustPressed("use"      );
+        this.inputs["inventory"] = GAME.input.wasInputJustPressed("inventory");
+    }
+    
+    private updateLook(){
+        // if we use the mouse, we want to recover the mouse delta
+        this.inputs["look"] = this.useMouse ? Sup.Input.getMouseDelta() : new Sup.Math.Vector2();
+        
+        // for each input we change the direction of the vector2
+        if( GAME.input.isInputDown("lookUp"   ) ) ++this.inputs["look"].y;
+        if( GAME.input.isInputDown("lookDown" ) ) --this.inputs["look"].y;
+        if( GAME.input.isInputDown("lookLeft" ) ) --this.inputs["look"].x;
+        if( GAME.input.isInputDown("lookRight") ) ++this.inputs["look"].x;
+    }
+    private updateMove(){
+        // we reset the move vector rather than creating a new one (0,0)
+        this.inputs["move"].set(0,0);
+        
+        // for each input we change the direction of the vector2
+        if( GAME.input.isInputDown("forward" ) ) ++this.inputs["move"].y;
+        if( GAME.input.isInputDown("backward") ) --this.inputs["move"].y;
+        if( GAME.input.isInputDown("left"    ) ) --this.inputs["move"].x;
+        if( GAME.input.isInputDown("right"   ) ) ++this.inputs["move"].x;
+        
+        // if the player is going in a direction
+        if( this.inputs["move"].x !== 0 || this.inputs["move"].y !== 0 ){
+            // we normalize the vector
+            this.inputs["move"].normalize();
+        }
+    }
+    private updateJump(){
+        // we assume the player is not jumping
+        this.inputs["jump"] = false;
+        
+        // we update jump input
+        if( GAME.input.wasInputJustPressed("jump") ){
+            this.jumpCounter = 1; // the player wants to jump
+        }
+        if( this.jumpCounter > 0 ){
+            this.jumpCounter -= 0.1;
+            this.inputs["jump"] = true;
+        }
+    }
+    private updateArm( a : number ){
+        let arm = "arm"+a;
+        this.inputs[arm].fire   = GAME.input.isInputDown("fire"+a);
+        this.inputs[arm].pulse  = GAME.input.wasInputJustPressed("fire"  +a);
+        this.inputs[arm].reload = GAME.input.wasInputJustPressed("reload"+a);
+    }
+    private updateSwitch(){
+        this.inputs["switch"] = 0;
+        if( GAME.input.isInputDown("switchUp"  ) ) ++this.inputs["switch"];
+        if( GAME.input.isInputDown("switchDown") ) --this.inputs["switch"];
     }
 }

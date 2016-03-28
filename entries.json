@@ -201,7 +201,18 @@
             "id": "77",
             "name": "basecrab",
             "type": null,
-            "children": []
+            "children": [
+              {
+                "id": "156",
+                "name": "Input",
+                "type": "script"
+              },
+              {
+                "id": "157",
+                "name": "Controller",
+                "type": "script"
+              }
+            ]
           },
           {
             "id": "79",
@@ -294,6 +305,28 @@
                     "type": "model"
                   }
                 ]
+              }
+            ]
+          },
+          {
+            "id": "123",
+            "name": "skyboxes",
+            "type": null,
+            "children": [
+              {
+                "id": "124",
+                "name": "red",
+                "type": "model"
+              },
+              {
+                "id": "125",
+                "name": "seventies",
+                "type": "model"
+              },
+              {
+                "id": "126",
+                "name": "jupiter",
+                "type": "model"
               }
             ]
           }
@@ -405,6 +438,158 @@
                 "type": "sprite"
               }
             ]
+          }
+        ]
+      },
+      {
+        "id": "139",
+        "name": "weapons",
+        "type": null,
+        "children": [
+          {
+            "id": "127",
+            "name": "characters",
+            "type": null,
+            "children": [
+              {
+                "id": "128",
+                "name": "rifle",
+                "type": "model"
+              },
+              {
+                "id": "129",
+                "name": "shotgun",
+                "type": "model"
+              },
+              {
+                "id": "130",
+                "name": "sniper",
+                "type": "model"
+              },
+              {
+                "id": "131",
+                "name": "grenader",
+                "type": "model"
+              },
+              {
+                "id": "132",
+                "name": "cannon",
+                "type": "model"
+              },
+              {
+                "id": "133",
+                "name": "machinegun",
+                "type": "model"
+              },
+              {
+                "id": "134",
+                "name": "barrels",
+                "type": "model"
+              },
+              {
+                "id": "138",
+                "name": "teslagun",
+                "type": "model"
+              },
+              {
+                "id": "135",
+                "name": "freezer",
+                "type": "model"
+              },
+              {
+                "id": "136",
+                "name": "pulsar",
+                "type": "model"
+              },
+              {
+                "id": "137",
+                "name": "blazar",
+                "type": "model"
+              }
+            ]
+          },
+          {
+            "id": "140",
+            "name": "crabs",
+            "type": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "141",
+        "name": "projectiles",
+        "type": null,
+        "children": [
+          {
+            "id": "142",
+            "name": "burst",
+            "type": "model"
+          },
+          {
+            "id": "144",
+            "name": "ray",
+            "type": "model"
+          },
+          {
+            "id": "145",
+            "name": "pulse",
+            "type": "model"
+          },
+          {
+            "id": "146",
+            "name": "blast",
+            "type": "model"
+          },
+          {
+            "id": "147",
+            "name": "ball",
+            "type": "model"
+          },
+          {
+            "id": "143",
+            "name": "laser",
+            "type": "model"
+          },
+          {
+            "id": "148",
+            "name": "red",
+            "type": "sprite"
+          },
+          {
+            "id": "149",
+            "name": "orange",
+            "type": "sprite"
+          },
+          {
+            "id": "150",
+            "name": "yellow",
+            "type": "sprite"
+          },
+          {
+            "id": "151",
+            "name": "green",
+            "type": "sprite"
+          },
+          {
+            "id": "152",
+            "name": "blue",
+            "type": "sprite"
+          },
+          {
+            "id": "153",
+            "name": "purple",
+            "type": "sprite"
+          },
+          {
+            "id": "154",
+            "name": "fireRed",
+            "type": "sprite"
+          },
+          {
+            "id": "155",
+            "name": "fireOrange",
+            "type": "sprite"
           }
         ]
       }

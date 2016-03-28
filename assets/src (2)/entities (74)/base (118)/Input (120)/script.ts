@@ -8,6 +8,6 @@ abstract class BaseInput implements IAttribute {
     
     public update(){}
     
-    public abstract getLook () : Sup.Math.Vector2;
-    public abstract getFire1() : boolean;
+    public abstract getLook() : Sup.Math.Vector2;
+    public abstract getArm1() : IArm;
 }

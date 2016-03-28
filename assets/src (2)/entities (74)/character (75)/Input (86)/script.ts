@@ -7,8 +7,7 @@ abstract class CharacterInput extends BaseInput {
     }
     
     public abstract getLook   () : Sup.Math.Vector2;
-    public abstract getFire1  () : boolean;
-    public abstract getReload1() : boolean;
+    public abstract getArm1   () : IArm;
     public abstract getMove   () : Sup.Math.Vector2;
     public abstract getJump   () : boolean;
     public abstract getCrounch() : boolean;

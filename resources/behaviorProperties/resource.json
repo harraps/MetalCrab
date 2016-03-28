@@ -156,6 +156,12 @@
           "type": "number"
         }
       ]
+    },
+    "CrabController": {
+      "scriptId": "157",
+      "line": 0,
+      "parentBehavior": "CharacterController",
+      "properties": []
     }
   }
 }
