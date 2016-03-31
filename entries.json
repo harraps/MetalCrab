@@ -47,6 +47,23 @@
         ]
       },
       {
+        "id": "162",
+        "name": "hud",
+        "type": null,
+        "children": [
+          {
+            "id": "164",
+            "name": "HUD",
+            "type": "script"
+          },
+          {
+            "id": "163",
+            "name": "Skybox",
+            "type": "script"
+          }
+        ]
+      },
+      {
         "id": "112",
         "name": "arms",
         "type": null,
@@ -592,6 +609,50 @@
             "type": "sprite"
           }
         ]
+      },
+      {
+        "id": "158",
+        "name": "hud",
+        "type": null,
+        "children": [
+          {
+            "id": "159",
+            "name": "bg",
+            "type": "sprite"
+          },
+          {
+            "id": "165",
+            "name": "font",
+            "type": "font"
+          },
+          {
+            "id": "166",
+            "name": "console",
+            "type": "font"
+          },
+          {
+            "id": "168",
+            "name": "weapons",
+            "type": null,
+            "children": [
+              {
+                "id": "167",
+                "name": "holder",
+                "type": "sprite"
+              },
+              {
+                "id": "169",
+                "name": "overlay",
+                "type": "sprite"
+              },
+              {
+                "id": "170",
+                "name": "weapons",
+                "type": "sprite"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -608,6 +669,11 @@
           {
             "id": "14",
             "name": "Player",
+            "type": "scene"
+          },
+          {
+            "id": "160",
+            "name": "HUD",
             "type": "scene"
           }
         ]

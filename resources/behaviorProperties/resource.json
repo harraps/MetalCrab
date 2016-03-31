@@ -162,6 +162,32 @@
       "line": 0,
       "parentBehavior": "CharacterController",
       "properties": []
+    },
+    "Skybox": {
+      "scriptId": "163",
+      "line": 0,
+      "parentBehavior": null,
+      "properties": [
+        {
+          "name": "path1",
+          "type": "string"
+        },
+        {
+          "name": "path2",
+          "type": "string"
+        }
+      ]
+    },
+    "HUD": {
+      "scriptId": "164",
+      "line": 0,
+      "parentBehavior": null,
+      "properties": [
+        {
+          "name": "path",
+          "type": "string"
+        }
+      ]
     }
   }
 }

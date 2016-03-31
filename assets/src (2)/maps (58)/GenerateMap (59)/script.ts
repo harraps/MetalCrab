@@ -39,9 +39,9 @@ class GenerateMap extends Sup.Behavior {
         this.tileset = this.actor.tileMapRenderer.getTileSet();
         
         this.trileSize = {
-            x: this.tileset.getGridSize().width,
+            x: this.tileset.getGridSize().width / this.tilemap.getPixelsPerUnit(),
             y: (<any>this.tilemap).__inner.data.layerDepthOffset,
-            z: this.tileset.getGridSize().height
+            z: this.tileset.getGridSize().height / this.tilemap.getPixelsPerUnit()
         };
         
         // the last layer should be used for pathfinding
@@ -141,29 +141,30 @@ class GenerateMap extends Sup.Behavior {
         // we recover the length of the slope
         let length = orientation==0 || orientation==180 ? (1+slope.point2.x-slope.point1.x)*this.trileSize.x : (1+slope.point2.z-slope.point1.z)*this.trileSize.z;
         let halfSize : Sup.Math.XYZ = { x: length*0.5, y: this.trileSize.y*0.5, z: this.trileSize.z*0.5 };
+        let vPad : number = halfSize.y*0.5;
         
         // now that we know the size of the collider, we can create it
         let vertices = [
-            // first side
-            new CANNON.Vec3( -halfSize.x, -halfSize.y, -halfSize.z ),
-            new CANNON.Vec3( -halfSize.x, -halfSize.y,  halfSize.z ),
-            new CANNON.Vec3( -halfSize.x,  halfSize.y,  halfSize.z ),
-            // second side
-            new CANNON.Vec3(  halfSize.x, -halfSize.y, -halfSize.z ),
-            new CANNON.Vec3(  halfSize.x, -halfSize.y,  halfSize.z ),
-            new CANNON.Vec3(  halfSize.x,  halfSize.y,  halfSize.z )
+            // left  side
+            new CANNON.Vec3( -halfSize.x, -halfSize.y+vPad, -halfSize.z ), // bottom front
+            new CANNON.Vec3( -halfSize.x, -halfSize.y+vPad,  halfSize.z ), // bottom back
+            new CANNON.Vec3( -halfSize.x,  halfSize.y+vPad,  halfSize.z ), // top back
+            // right side
+            new CANNON.Vec3(  halfSize.x, -halfSize.y+vPad, -halfSize.z ), // bottom front
+            new CANNON.Vec3(  halfSize.x, -halfSize.y+vPad,  halfSize.z ), // bottom back
+            new CANNON.Vec3(  halfSize.x,  halfSize.y+vPad,  halfSize.z )  // top back
         ];
         // /!\ we have to be cautionous of the order of the vertices /!\
         let faces : any = [
-            [0,1,2], // first side
-            [5,4,3], // second side
-            [0,3,4,1],
-            [1,4,5,2],
-            [0,2,5,3]
+            [0,1,2],   // left   side
+            [3,5,4],   // right  side
+            [0,3,4,1], // bottom face
+            [1,4,5,2], // back   face
+            [0,2,5,3]  // slope
         ];
         let offset = new CANNON.Vec3(
             ( slope.point1.x + (1+slope.point2.x-slope.point1.x)*0.5)*this.trileSize.x,
-            ( slope.point1.y - (1+slope.point2.y-slope.point1.y)*0.5)*this.trileSize.y,
+            ( slope.point1.y - (1+slope.point2.y-slope.point1.y)*0.5)*this.trileSize.y - vPad,
             (-slope.point1.z - (1+slope.point2.z-slope.point1.z)*0.5)*this.trileSize.z
         );
         let polyhedron = new CANNON.ConvexPolyhedron( vertices, faces);

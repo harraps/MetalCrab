@@ -2,33 +2,6 @@
   "formatVersion": 1,
   "nodes": [
     {
-      "id": "1",
-      "name": "Building",
-      "children": [],
-      "components": [],
-      "position": {
-        "x": -24.4384708404541,
-        "y": -5,
-        "z": 0
-      },
-      "orientation": {
-        "x": 0,
-        "y": 0,
-        "z": 0,
-        "w": 1
-      },
-      "scale": {
-        "x": 1,
-        "y": 1,
-        "z": 1
-      },
-      "visible": true,
-      "layer": 0,
-      "prefab": {
-        "sceneAssetId": "20"
-      }
-    },
-    {
       "id": "2",
       "name": "Player",
       "children": [],
@@ -53,87 +26,6 @@
       "layer": 0,
       "prefab": {
         "sceneAssetId": "14"
-      }
-    },
-    {
-      "id": "3",
-      "name": "Building2",
-      "children": [],
-      "components": [],
-      "position": {
-        "x": -33.19838333129883,
-        "y": 15.251742362976074,
-        "z": -20.872547149658203
-      },
-      "orientation": {
-        "x": 0,
-        "y": 0,
-        "z": 0,
-        "w": 1
-      },
-      "scale": {
-        "x": 1,
-        "y": 1,
-        "z": 1
-      },
-      "visible": true,
-      "layer": 0,
-      "prefab": {
-        "sceneAssetId": "20"
-      }
-    },
-    {
-      "id": "4",
-      "name": "Building3",
-      "children": [],
-      "components": [],
-      "position": {
-        "x": -6.152735710144043,
-        "y": -2.0310025215148926,
-        "z": -39.44856262207031
-      },
-      "orientation": {
-        "x": 0,
-        "y": 0,
-        "z": 0,
-        "w": 1
-      },
-      "scale": {
-        "x": 1,
-        "y": 1,
-        "z": 1
-      },
-      "visible": true,
-      "layer": 0,
-      "prefab": {
-        "sceneAssetId": "20"
-      }
-    },
-    {
-      "id": "5",
-      "name": "Building4",
-      "children": [],
-      "components": [],
-      "position": {
-        "x": 28.194076538085938,
-        "y": -0.03195258602499962,
-        "z": -8.793362617492676
-      },
-      "orientation": {
-        "x": 0,
-        "y": 0,
-        "z": -0.22425070386290458,
-        "w": 0.974531487848211
-      },
-      "scale": {
-        "x": 1,
-        "y": 1,
-        "z": 1
-      },
-      "visible": true,
-      "layer": 0,
-      "prefab": {
-        "sceneAssetId": "20"
       }
     },
     {
@@ -207,33 +99,6 @@
       "prefab": null
     },
     {
-      "id": "7",
-      "name": "Building5",
-      "children": [],
-      "components": [],
-      "position": {
-        "x": 27.96178436279297,
-        "y": 1.3775964975357056,
-        "z": -81.41272735595703
-      },
-      "orientation": {
-        "x": 0.08633260416127067,
-        "y": 0.0076860069769092276,
-        "z": -0.0883434144909648,
-        "w": 0.9923119729728955
-      },
-      "scale": {
-        "x": 1,
-        "y": 1,
-        "z": 1
-      },
-      "visible": true,
-      "layer": 0,
-      "prefab": {
-        "sceneAssetId": "20"
-      }
-    },
-    {
       "id": "8",
       "name": "Map",
       "children": [],
@@ -280,88 +145,125 @@
       "prefab": null
     },
     {
-      "id": "10",
-      "name": "Actor",
-      "children": [],
-      "components": [
-        {
-          "type": "CannonBody",
-          "config": {
-            "mass": 0,
-            "fixedRotation": true,
-            "offset": {
-              "x": 0,
-              "y": 0,
-              "z": 0
-            },
-            "shape": "cylinder",
-            "halfSize": {
-              "x": 0.5,
-              "y": 0.5,
-              "z": 0.5
-            },
-            "radius": 1,
-            "height": 1
-          },
-          "id": "0"
-        },
-        {
-          "type": "Behavior",
-          "config": {
-            "behaviorName": "SoundCloud",
-            "propertyValues": {}
-          },
-          "id": "1"
-        }
-      ],
-      "position": {
-        "x": -0.6798421740531921,
-        "y": 5.372913837432861,
-        "z": -38.449928283691406
-      },
-      "orientation": {
-        "x": -0.7071067811865475,
-        "y": 0,
-        "z": 0,
-        "w": 0.7071067811865476
-      },
-      "scale": {
-        "x": 1,
-        "y": 1,
-        "z": 1
-      },
-      "visible": true,
-      "layer": 0,
-      "prefab": null
-    },
-    {
-      "id": "11",
-      "name": "Actor",
+      "id": "15",
+      "name": "buildings",
       "children": [
         {
-          "id": "12",
-          "name": "head",
+          "id": "7",
+          "name": "Building5",
           "children": [],
-          "components": [
-            {
-              "type": "ModelRenderer",
-              "config": {
-                "modelAssetId": "107",
-                "animationId": null,
-                "castShadow": false,
-                "receiveShadow": false,
-                "color": "ffffff",
-                "overrideOpacity": false,
-                "opacity": null,
-                "materialType": "basic",
-                "shaderAssetId": null
-              },
-              "id": "0"
-            }
-          ],
+          "components": [],
           "position": {
-            "x": 0.757533073425293,
+            "x": 27.96178436279297,
+            "y": 1.3775964975357056,
+            "z": -81.41272735595703
+          },
+          "orientation": {
+            "x": 0.08633260416127067,
+            "y": 0.007686006832819824,
+            "z": -0.0883434144909648,
+            "w": 0.9923119729728955
+          },
+          "scale": {
+            "x": 0.999999986069672,
+            "y": 1.0000000234489062,
+            "z": 1.0000000054347655
+          },
+          "visible": true,
+          "layer": 0,
+          "prefab": {
+            "sceneAssetId": "20"
+          }
+        },
+        {
+          "id": "5",
+          "name": "Building4",
+          "children": [],
+          "components": [],
+          "position": {
+            "x": 28.194076538085938,
+            "y": -0.03195258602499962,
+            "z": -8.793362617492676
+          },
+          "orientation": {
+            "x": 0,
             "y": 0,
+            "z": -0.22425070386290458,
+            "w": 0.974531487848211
+          },
+          "scale": {
+            "x": 0.9999999980828282,
+            "y": 0.9999999980828282,
+            "z": 1
+          },
+          "visible": true,
+          "layer": 0,
+          "prefab": {
+            "sceneAssetId": "20"
+          }
+        },
+        {
+          "id": "4",
+          "name": "Building3",
+          "children": [],
+          "components": [],
+          "position": {
+            "x": -6.152735710144043,
+            "y": -2.0310025215148926,
+            "z": -39.44856262207031
+          },
+          "orientation": {
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "w": 1
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "visible": true,
+          "layer": 0,
+          "prefab": {
+            "sceneAssetId": "20"
+          }
+        },
+        {
+          "id": "3",
+          "name": "Building2",
+          "children": [],
+          "components": [],
+          "position": {
+            "x": -33.19838333129883,
+            "y": 15.251742362976074,
+            "z": -20.872547149658203
+          },
+          "orientation": {
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "w": 1
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "visible": true,
+          "layer": 0,
+          "prefab": {
+            "sceneAssetId": "20"
+          }
+        },
+        {
+          "id": "1",
+          "name": "Building",
+          "children": [],
+          "components": [],
+          "position": {
+            "x": -24.4384708404541,
+            "y": -5,
             "z": 0
           },
           "orientation": {
@@ -377,59 +279,72 @@
           },
           "visible": true,
           "layer": 0,
-          "prefab": null
-        },
+          "prefab": {
+            "sceneAssetId": "20"
+          }
+        }
+      ],
+      "components": [],
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "orientation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "visible": true,
+      "layer": 0,
+      "prefab": null
+    },
+    {
+      "id": "16",
+      "name": "skybox",
+      "children": [
         {
-          "id": "14",
-          "name": "anchor",
-          "children": [
+          "id": "17",
+          "name": "cam",
+          "children": [],
+          "components": [
             {
-              "id": "13",
-              "name": "body",
-              "children": [],
-              "components": [
-                {
-                  "type": "ModelRenderer",
-                  "config": {
-                    "modelAssetId": "107",
-                    "animationId": null,
-                    "castShadow": false,
-                    "receiveShadow": false,
-                    "color": "ffffff",
-                    "overrideOpacity": false,
-                    "opacity": null,
-                    "materialType": "basic",
-                    "shaderAssetId": null
-                  },
-                  "id": "0"
-                }
-              ],
-              "position": {
-                "x": 2.8718719482421875,
-                "y": 1.8707189559936523,
-                "z": -0.23755645751953125
+              "type": "Camera",
+              "config": {
+                "mode": "perspective",
+                "fov": 45,
+                "orthographicScale": 10,
+                "viewport": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1,
+                  "height": 1
+                },
+                "depth": -1,
+                "nearClippingPlane": 0.1,
+                "farClippingPlane": 1.5
               },
-              "orientation": {
-                "x": 0,
-                "y": 0,
-                "z": 0,
-                "w": 1
+              "id": "0"
+            },
+            {
+              "type": "Behavior",
+              "config": {
+                "behaviorName": "Skybox",
+                "propertyValues": {}
               },
-              "scale": {
-                "x": 1,
-                "y": 1,
-                "z": 1
-              },
-              "visible": true,
-              "layer": 0,
-              "prefab": null
+              "id": "1"
             }
           ],
-          "components": [],
           "position": {
-            "x": -2.3616485595703125,
-            "y": 0.5646944046020508,
-            "z": 0.170257568359375
+            "x": 0,
+            "y": 0,
+            "z": 0
           },
           "orientation": {
             "x": 0,
@@ -451,7 +366,7 @@
         {
           "type": "ModelRenderer",
           "config": {
-            "modelAssetId": "107",
+            "modelAssetId": "125",
             "animationId": null,
             "castShadow": false,
             "receiveShadow": false,
@@ -462,25 +377,12 @@
             "shaderAssetId": null
           },
           "id": "0"
-        },
-        {
-          "type": "Behavior",
-          "config": {
-            "behaviorName": "ApplyTexture",
-            "propertyValues": {
-              "texture": {
-                "type": "string",
-                "value": "res/characters/enemy/red"
-              }
-            }
-          },
-          "id": "1"
         }
       ],
       "position": {
-        "x": 180,
-        "y": 6,
-        "z": -70
+        "x": 0,
+        "y": -20,
+        "z": 0
       },
       "orientation": {
         "x": 0,
@@ -496,6 +398,33 @@
       "visible": true,
       "layer": 0,
       "prefab": null
+    },
+    {
+      "id": "18",
+      "name": "HUD",
+      "children": [],
+      "components": [],
+      "position": {
+        "x": 0,
+        "y": -20,
+        "z": -5
+      },
+      "orientation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "visible": true,
+      "layer": 0,
+      "prefab": {
+        "sceneAssetId": "160"
+      }
     }
   ]
 }
