@@ -10,6 +10,11 @@
         "type": "script"
       },
       {
+        "id": "175",
+        "name": "WeaponManager",
+        "type": "script"
+      },
+      {
         "id": "122",
         "name": "Level",
         "type": "script"
@@ -59,6 +64,11 @@
           {
             "id": "163",
             "name": "Skybox",
+            "type": "script"
+          },
+          {
+            "id": "174",
+            "name": "Arms",
             "type": "script"
           }
         ]
@@ -198,6 +208,11 @@
               {
                 "id": "24",
                 "name": "Wall",
+                "type": "script"
+              },
+              {
+                "id": "173",
+                "name": "Inventory",
                 "type": "script"
               }
             ]
@@ -504,13 +519,18 @@
                 "type": "model"
               },
               {
-                "id": "138",
-                "name": "teslagun",
+                "id": "135",
+                "name": "freezer",
                 "type": "model"
               },
               {
-                "id": "135",
-                "name": "freezer",
+                "id": "176",
+                "name": "flamethrower",
+                "type": "model"
+              },
+              {
+                "id": "138",
+                "name": "teslagun",
                 "type": "model"
               },
               {
@@ -662,6 +682,12 @@
     "type": null,
     "children": [
       {
+        "id": "172",
+        "name": "projectiles",
+        "type": null,
+        "children": []
+      },
+      {
         "id": "13",
         "name": "player",
         "type": null,
@@ -674,6 +700,11 @@
           {
             "id": "160",
             "name": "HUD",
+            "type": "scene"
+          },
+          {
+            "id": "171",
+            "name": "Arms",
             "type": "scene"
           }
         ]

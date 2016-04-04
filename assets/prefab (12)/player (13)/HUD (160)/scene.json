@@ -34,7 +34,7 @@
               ],
               "position": {
                 "x": 0,
-                "y": 0,
+                "y": 0.1,
                 "z": -5
               },
               "orientation": {
@@ -44,8 +44,8 @@
                 "w": 1
               },
               "scale": {
-                "x": 10,
-                "y": 0.8,
+                "x": 1.03,
+                "y": 0.1,
                 "z": 1
               },
               "visible": true,
@@ -53,36 +53,18 @@
               "prefab": null
             },
             {
-              "id": "3",
-              "name": "weap_L",
+              "id": "5",
+              "name": "weapon",
               "children": [
                 {
-                  "id": "4",
-                  "name": "overlay",
+                  "id": "3",
+                  "name": "left",
                   "children": [],
-                  "components": [
-                    {
-                      "type": "SpriteRenderer",
-                      "config": {
-                        "spriteAssetId": "169",
-                        "animationId": null,
-                        "horizontalFlip": false,
-                        "verticalFlip": false,
-                        "castShadow": false,
-                        "receiveShadow": false,
-                        "color": "ffffff",
-                        "overrideOpacity": false,
-                        "opacity": null,
-                        "materialType": "basic",
-                        "shaderAssetId": null
-                      },
-                      "id": "0"
-                    }
-                  ],
+                  "components": [],
                   "position": {
-                    "x": 0,
-                    "y": 0,
-                    "z": -0.2
+                    "x": -0.3733333349227905,
+                    "y": 3.973639195464784e-9,
+                    "z": -0.09999966621398926
                   },
                   "orientation": {
                     "x": 0,
@@ -93,21 +75,21 @@
                   "scale": {
                     "x": 1,
                     "y": 1,
-                    "z": 1
+                    "z": 0.9999999403953552
                   },
                   "visible": true,
                   "layer": 0,
                   "prefab": null
                 },
                 {
-                  "id": "5",
-                  "name": "weapon",
+                  "id": "6",
+                  "name": "right",
                   "children": [],
                   "components": [],
                   "position": {
-                    "x": 0,
-                    "y": 0,
-                    "z": -0.1
+                    "x": 0.3733333349227905,
+                    "y": 3.973639195464784e-9,
+                    "z": -0.09999966621398926
                   },
                   "orientation": {
                     "x": 0,
@@ -118,7 +100,7 @@
                   "scale": {
                     "x": 1,
                     "y": 1,
-                    "z": 1
+                    "z": 0.9999999403953552
                   },
                   "visible": true,
                   "layer": 0,
@@ -145,9 +127,9 @@
                 }
               ],
               "position": {
-                "x": -0.5,
-                "y": 0,
-                "z": -4
+                "x": 0,
+                "y": 0.1,
+                "z": -3.9
               },
               "orientation": {
                 "x": 0,
@@ -156,120 +138,8 @@
                 "w": 1
               },
               "scale": {
-                "x": 1.2,
-                "y": 1.2,
-                "z": 1
-              },
-              "visible": true,
-              "layer": 0,
-              "prefab": null
-            },
-            {
-              "id": "6",
-              "name": "weap_R",
-              "children": [
-                {
-                  "id": "7",
-                  "name": "overlay",
-                  "children": [],
-                  "components": [
-                    {
-                      "type": "SpriteRenderer",
-                      "config": {
-                        "spriteAssetId": "169",
-                        "animationId": null,
-                        "horizontalFlip": false,
-                        "verticalFlip": false,
-                        "castShadow": false,
-                        "receiveShadow": false,
-                        "color": "ffffff",
-                        "overrideOpacity": false,
-                        "opacity": null,
-                        "materialType": "basic",
-                        "shaderAssetId": null
-                      },
-                      "id": "0"
-                    }
-                  ],
-                  "position": {
-                    "x": 0,
-                    "y": 0,
-                    "z": -0.2
-                  },
-                  "orientation": {
-                    "x": 0,
-                    "y": 0,
-                    "z": 0,
-                    "w": 1
-                  },
-                  "scale": {
-                    "x": 1,
-                    "y": 1,
-                    "z": 1
-                  },
-                  "visible": true,
-                  "layer": 0,
-                  "prefab": null
-                },
-                {
-                  "id": "8",
-                  "name": "weapon",
-                  "children": [],
-                  "components": [],
-                  "position": {
-                    "x": 0,
-                    "y": 0,
-                    "z": -0.1
-                  },
-                  "orientation": {
-                    "x": 0,
-                    "y": 0,
-                    "z": 0,
-                    "w": 1
-                  },
-                  "scale": {
-                    "x": 1,
-                    "y": 1,
-                    "z": 1
-                  },
-                  "visible": true,
-                  "layer": 0,
-                  "prefab": null
-                }
-              ],
-              "components": [
-                {
-                  "type": "SpriteRenderer",
-                  "config": {
-                    "spriteAssetId": "167",
-                    "animationId": null,
-                    "horizontalFlip": false,
-                    "verticalFlip": false,
-                    "castShadow": false,
-                    "receiveShadow": false,
-                    "color": "ffffff",
-                    "overrideOpacity": false,
-                    "opacity": null,
-                    "materialType": "basic",
-                    "shaderAssetId": null
-                  },
-                  "id": "0"
-                }
-              ],
-              "position": {
-                "x": 0.5,
-                "y": 0,
-                "z": -4
-              },
-              "orientation": {
-                "x": 0,
-                "y": 0,
-                "z": 0,
-                "w": 1
-              },
-              "scale": {
-                "x": 1.2,
-                "y": 1.2,
+                "x": 0.15000000596046448,
+                "y": 0.15000000596046448,
                 "z": 1
               },
               "visible": true,
@@ -280,7 +150,7 @@
           "components": [],
           "position": {
             "x": 0,
-            "y": -4.281791687011719,
+            "y": -5,
             "z": 0
           },
           "orientation": {
@@ -290,8 +160,8 @@
             "w": 1
           },
           "scale": {
-            "x": 1,
-            "y": 1,
+            "x": 8,
+            "y": 8,
             "z": 1
           },
           "visible": true,
@@ -312,7 +182,7 @@
               "width": 1,
               "height": 1
             },
-            "depth": 0,
+            "depth": 3,
             "nearClippingPlane": 0.1,
             "farClippingPlane": 5.1
           },

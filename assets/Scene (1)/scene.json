@@ -326,7 +326,7 @@
                   "width": 1,
                   "height": 1
                 },
-                "depth": -1,
+                "depth": 0,
                 "nearClippingPlane": 0.1,
                 "farClippingPlane": 1.5
               },
@@ -381,7 +381,7 @@
       ],
       "position": {
         "x": 0,
-        "y": -20,
+        "y": -50,
         "z": 0
       },
       "orientation": {
@@ -406,7 +406,7 @@
       "components": [],
       "position": {
         "x": 0,
-        "y": -20,
+        "y": -50,
         "z": -5
       },
       "orientation": {
@@ -424,6 +424,33 @@
       "layer": 0,
       "prefab": {
         "sceneAssetId": "160"
+      }
+    },
+    {
+      "id": "19",
+      "name": "Arms",
+      "children": [],
+      "components": [],
+      "position": {
+        "x": 0,
+        "y": -50,
+        "z": -12
+      },
+      "orientation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "visible": true,
+      "layer": 0,
+      "prefab": {
+        "sceneAssetId": "171"
       }
     }
   ]

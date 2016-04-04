@@ -188,6 +188,17 @@
           "type": "string"
         }
       ]
+    },
+    "Arms": {
+      "scriptId": "174",
+      "line": 0,
+      "parentBehavior": null,
+      "properties": [
+        {
+          "name": "path",
+          "type": "string"
+        }
+      ]
     }
   }
 }

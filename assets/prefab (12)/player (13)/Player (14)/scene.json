@@ -26,7 +26,7 @@
                       "width": 1,
                       "height": 1
                     },
-                    "depth": 0,
+                    "depth": 1,
                     "nearClippingPlane": 0.1,
                     "farClippingPlane": 1000
                   },

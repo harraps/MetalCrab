@@ -3,26 +3,26 @@ class HUD extends Sup.Behavior {
     public path : string = "Player";
     protected player : PlayerController;
     
-    protected bg : Sup.Actor;
+    protected panel   : Sup.Actor;
+    protected weaponL : Sup.Actor;
+    protected weaponR : Sup.Actor;
+    
     
     public start() {
         this.player = Sup.getActor(this.path).getBehavior(PlayerController);
-        this.bg = this.actor.getChild("panel/bg");
+        this.panel = this.actor.getChild("panel");
         
         
     }
     public update() {
-        
+        this.updateBG();
     }
     
     public updateBG(){
-        let view = this.actor.camera.getViewport();
-        let ratio = Sup.Game.getScreenRatio();
-        
-        Sup.log( view, ratio );
-        
-        this.bg.setLocalScaleX( view.width  );
-        this.bg.setLocalScaleY( view.height );
+        let ortho = this.actor.camera.getOrthographicScale()*0.5;
+        let ratio = this.actor.camera.getWidthToHeightRatio();
+        ortho *= ratio;
+        this.panel.setLocalScale({x:ortho, y:ortho, z:1});
     }
 }
 Sup.registerBehavior(HUD);
