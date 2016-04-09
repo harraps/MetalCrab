@@ -61,36 +61,25 @@ class PlayerInventory implements IAttribute {
             equiped : [],
             current : null
         };
+        let arms = Sup.getActor(this.ctrl.armsPath);
         // we init the weapons unlock
         for( let name of WeaponManager.humanWeapons ){
             this.unlocked[name] = false;
+            let weapon; // we initialize the weapon for both arms
+            
+            weapon = arms.getChild("left/" +name).getBehavior(AbstractWeapon);
+            weapon.init(this.ctrl, this.ctrl.emitter1);
+            this.inventoryL.weapons[name] = weapon;
+            
+            weapon = arms.getChild("right/"+name).getBehavior(AbstractWeapon);
+            weapon.init(this.ctrl, this.ctrl.emitter2);
+            this.inventoryR.weapons[name] = weapon;
         }
-        this.initInventorySide(true );
-        this.initInventorySide(false);
-        
-    }
-    private initInventorySide( left : boolean ){
-        let array = left ? this.inventoryL.weapons : this.inventoryR.weapons;
-        array["hook"        ] = null;
-        array["knife"       ] = null;
-        array["rifle"       ] = null;
-        array["shotgun"     ] = null;
-        array["sniper"      ] = null;
-        array["machinegun"  ] = null;
-        array["grenader"    ] = null;
-        array["cannon"      ] = null;
-        array["freezer"     ] = null;
-        array["flamethrower"] = null;
-        array["teslagun"    ] = null;
-        array["pulsar"      ] = null;
-        array["blazar"      ] = null;
     }
     
     public update() {
         
     }
-    
-    
     
     // set the current weapons by there id in the list
     public setCurrentWeapons ( id : number ){
@@ -148,6 +137,37 @@ class PlayerInventory implements IAttribute {
             let inventory = left ? this.inventoryL : this.inventoryR;
             inventory.equiped[id] = inventory.weapons[name];
         }
+    }
+    
+    
+    public getAmmo( ammo : string ) : number{
+        return this.ammo[ammo];
+    }
+    // if we can add ammo it returns true, false otherwise
+    public addAmmo( ammo : string, quantity : number ) : boolean{
+        // as long we haven't reached the limit of ammo
+        if( this.ammo[ammo] < WeaponManager.maxAmmo ){
+            // we add ammo
+            this.ammo[ammo] += quantity;
+            // if we exceed the ammo limit
+            if( this.ammo[ammo] > WeaponManager.maxAmmo ){
+                this.ammo[ammo] = WeaponManager.maxAmmo;
+            }
+            return true;
+        }
+        return false;
+    }
+    // if we can remove ammo it returns true, false otherwise
+    public removeAmmo( ammo : string, quantity : number ) : boolean{
+        // as long as we have more ammo than the requiered quantity
+        if( this.ammo[ammo] > quantity ){
+            // we remove ammo
+            this.ammo[ammo] -= quantity;
+            // if we go lower than zero
+            if(this.ammo[ammo] < 0) this.ammo[ammo] = 0;
+            return true;
+        }
+        return false;
     }
 }
 

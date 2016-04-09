@@ -18,20 +18,20 @@ abstract class BaseLook implements IAttribute {
         // we rotate the character based on the mouse delta
         let delta = this.ctrl.input.getLook();
         // we rotate the anchor horizontally
-        this.ctrl.Anchor.rotateLocalEulerY( delta.x * -this.ctrl.sensibility );
+        this.ctrl.anchor.rotateLocalEulerY( delta.x * -this.ctrl.sensibility );
         this.angle.x += delta.x * -this.ctrl.sensibility;
         this.angle.x %= Util.TAU;
         
         // we rotate the camera vertically
-        this.ctrl.Head.rotateLocalEulerX( delta.y * this.ctrl.sensibility );
+        this.ctrl.head.rotateLocalEulerX( delta.y * this.ctrl.sensibility );
         this.angle.y += delta.y * this.ctrl.sensibility;
 
 
         if( this.angle.y > Util.halfPI ){
-            this.ctrl.Head.setLocalEulerX( Util.halfPI );
+            this.ctrl.head.setLocalEulerX( Util.halfPI );
             this.angle.y = Util.halfPI;
         } else if( this.angle.y < -Util.halfPI ){
-            this.ctrl.Head.setLocalEulerX( -Util.halfPI );
+            this.ctrl.head.setLocalEulerX( -Util.halfPI );
             this.angle.y = -Util.halfPI;
         }
     }
@@ -39,7 +39,7 @@ abstract class BaseLook implements IAttribute {
     public addRotation( angle : number ){
         angle %= Util.TAU;
         // we add rotation to our player
-        this.ctrl.Anchor.rotateLocalEulerY(angle);
+        this.ctrl.anchor.rotateLocalEulerY(angle);
         this.angle.x += angle;
     }
 }

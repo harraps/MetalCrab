@@ -6,6 +6,10 @@ let Util = {
     TAU       : Math.PI*2,   // TAU is just the double of PI
     halfPI    : Math.PI*0.5, // this is a shortcut since we often need this value
     
+    // return a random value within the given boundaries
+    random( from : number, to : number ){
+        return Math.random()*(to - from) - from;
+    },
     // Mathematic functions
     smallestAngle( a ){
         a %= Util.TAU;
@@ -65,7 +69,53 @@ let Util = {
             1 - 2*( q.x*q.x + q.y*q.y )
         );
     },
+    lookRotation( forward : Sup.Math.Vector3, up : Sup.Math.Vector3 = Sup.Math.Vector3.up() ) : Sup.Math.Quaternion {
+        // we create 3 vectors
+        let v2 = forward.clone().normalize();
+        let v0 = up.clone().cross(v2).normalize();
+        let v1 = v2.clone().cross(v0);
+        // we declare our variables
+        let q = new Sup.Math.Quaternion();
+        let a, b : number;
+        // we calculate the component of the quaternion 
+        a = v0.x + v1.y + v2.z;
+        if(a > 0){
+            b = Math.sqrt(a + 1);
+            q.w = 0.5*b;
+            b = 0.5/b;
+            q.x = (v1.z - v2.y)*b;
+            q.y = (v2.x - v0.z)*b;
+            q.z = (v0.y - v1.x)*b;
+            return q;
+        }
+        if((v0.x >= v1.y) && (v0.x >= v2.z)){
+            a = Math.sqrt(1 + v0.x - v1.y - v2.z);
+            b = 0.5/a;
+            q.x = 0.5*a;
+            q.y = (v0.y + v1.x)*b;
+            q.z = (v0.z + v2.x)*b;
+            q.w = (v1.z - v2.y)*b;
+            return q;
+        }
+        if(v1.y > v2.z){
+            a = Math.sqrt(1 + v1.y - v0.x - v2.z);
+            b = 0.5/a;
+            q.x = (v1.x + v0.y)*b;
+            q.y = 0.5*a;
+            q.z = (v2.y + v1.z)*b;
+            q.w = (v2.x - v0.z)*b;
+            return q;
+        }
+        a = Math.sqrt(1 + v2.z - v0.x - v1.y);
+        b = 0.5/a;
+        q.x = (v2.x + v0.z)*b;
+        q.y = (v2.y + v1.z)*b;
+        q.z = 0.5*a;
+        q.w = (v0.y - v1.x)*b;
+        return q;
+    },
     
+    // this function allow us to now if both bodies are in contact
     bodiesAreInContact(bodyA, bodyB){
     for(var i=0; i<GAME.level.World.contacts.length; i++){
         var c = GAME.level.World.contacts[i];
@@ -75,7 +125,7 @@ let Util = {
     }
         return false;
     },
-        
+    
     // shortcut functions
     // allow us to create irays
     createIRay( from : CANNON.Vec3, to : CANNON.Vec3, filter = -1 ) : CANNON.IRayIntersectWorldOptions {
@@ -94,28 +144,13 @@ let Util = {
     createIRaySup( from : Sup.Math.Vector3, to : Sup.Math.Vector3, filter = -1 ){
         return Util.createIRay( Util.getCannonVec(from), Util.getCannonVec(to), filter );
     },
-    // this function can be used for ground or ceilling detection
-    checkCollision( ray : CANNON.Ray, vertice : CANNON.Vec3, angle : number = null,  padding_contact : number = -0.5, padding_emit : number = 0.1 ) : boolean{
-        vertice = vertice.clone();
-        let contact = vertice.clone();
-        // we add padding to both vector
-        vertice.y += padding_emit;
-        contact.y += padding_contact;
-        // we perform the raycast
-        ray.intersectWorld( GAME.level.World, Util.createIRay( vertice, contact ) );
-        // if we didn't specified an angle
-        if( angle == null ){
-            return ray.hasHit;
-        }else{
-            // if the raycast has hit
-            if( ray.hasHit ){
-                // we compare the hit normal to the vector up
-                let normal = Util.getSupVec(ray.result.hitNormalWorld).angleTo(Sup.Math.Vector3.up());
-                // if the angle from the normal to the vector up is lower than the angle we gave
-                return(normal < angle);
-            }
-        }
-        return false;
+    // we cast a ray from the first vector to the second one, return the result
+    raycast( from : Sup.Math.Vector3, to : Sup.Math.Vector3, filter: number ): CANNON.RaycastResult{
+        let iray = Util.createIRaySup( from, to, filter );
+        let ray = new CANNON.Ray();
+        // we check if the bullet collide with something
+        ray.intersectWorld(GAME.level.World, iray);
+        return ray.result;
     }
 };
 

@@ -20,11 +20,6 @@
         "type": "script"
       },
       {
-        "id": "111",
-        "name": "Interfaces",
-        "type": "script"
-      },
-      {
         "id": "15",
         "name": "Game",
         "type": "script"
@@ -70,49 +65,6 @@
             "id": "174",
             "name": "Arms",
             "type": "script"
-          }
-        ]
-      },
-      {
-        "id": "112",
-        "name": "arms",
-        "type": null,
-        "children": [
-          {
-            "id": "110",
-            "name": "weapons",
-            "type": null,
-            "children": [
-              {
-                "id": "115",
-                "name": "AbstractWeapon",
-                "type": "script"
-              }
-            ]
-          },
-          {
-            "id": "113",
-            "name": "projectiles",
-            "type": null,
-            "children": [
-              {
-                "id": "116",
-                "name": "Projectile",
-                "type": "script"
-              }
-            ]
-          },
-          {
-            "id": "114",
-            "name": "explosions",
-            "type": null,
-            "children": [
-              {
-                "id": "117",
-                "name": "Explosion",
-                "type": "script"
-              }
-            ]
           }
         ]
       },
@@ -257,6 +209,81 @@
             "name": "enemycrab",
             "type": null,
             "children": []
+          }
+        ]
+      },
+      {
+        "id": "112",
+        "name": "arms",
+        "type": null,
+        "children": [
+          {
+            "id": "110",
+            "name": "weapons",
+            "type": null,
+            "children": [
+              {
+                "id": "115",
+                "name": "AbstractWeapon",
+                "type": "script"
+              },
+              {
+                "id": "183",
+                "name": "Firearm",
+                "type": "script"
+              },
+              {
+                "id": "186",
+                "name": "Shotgun",
+                "type": "script"
+              }
+            ]
+          },
+          {
+            "id": "113",
+            "name": "projectiles",
+            "type": null,
+            "children": [
+              {
+                "id": "116",
+                "name": "AbstractProjectile",
+                "type": "script"
+              },
+              {
+                "id": "184",
+                "name": "Projectile",
+                "type": "script"
+              },
+              {
+                "id": "185",
+                "name": "Grenade",
+                "type": "script"
+              }
+            ]
+          },
+          {
+            "id": "114",
+            "name": "explosions",
+            "type": null,
+            "children": [
+              {
+                "id": "117",
+                "name": "Explosion",
+                "type": "script"
+              }
+            ]
+          },
+          {
+            "id": "187",
+            "name": "effects",
+            "type": null,
+            "children": [
+              {
+                "id": "188",
+                "name": "Effect",
+                "type": "script"
+              }
+            ]
           }
         ]
       },
@@ -484,6 +511,16 @@
             "type": null,
             "children": [
               {
+                "id": "177",
+                "name": "hook",
+                "type": "model"
+              },
+              {
+                "id": "178",
+                "name": "knife",
+                "type": "model"
+              },
+              {
                 "id": "128",
                 "name": "rifle",
                 "type": "model"
@@ -554,8 +591,30 @@
         ]
       },
       {
-        "id": "141",
+        "id": "179",
         "name": "projectiles",
+        "type": null,
+        "children": [
+          {
+            "id": "180",
+            "name": "drill",
+            "type": "model"
+          },
+          {
+            "id": "181",
+            "name": "wire",
+            "type": "model"
+          },
+          {
+            "id": "182",
+            "name": "bullet",
+            "type": "model"
+          }
+        ]
+      },
+      {
+        "id": "141",
+        "name": "flames",
         "type": null,
         "children": [
           {
@@ -740,6 +799,78 @@
                 "type": "scene"
               }
             ]
+          }
+        ]
+      },
+      {
+        "id": "189",
+        "name": "weapons",
+        "type": null,
+        "children": [
+          {
+            "id": "191",
+            "name": "Hook",
+            "type": "scene"
+          },
+          {
+            "id": "192",
+            "name": "Knife",
+            "type": "scene"
+          },
+          {
+            "id": "190",
+            "name": "Rifle",
+            "type": "scene"
+          },
+          {
+            "id": "193",
+            "name": "Shotgun",
+            "type": "scene"
+          },
+          {
+            "id": "194",
+            "name": "Sniper",
+            "type": "scene"
+          },
+          {
+            "id": "195",
+            "name": "Machinegun",
+            "type": "scene"
+          },
+          {
+            "id": "196",
+            "name": "Grenader",
+            "type": "scene"
+          },
+          {
+            "id": "197",
+            "name": "Cannon",
+            "type": "scene"
+          },
+          {
+            "id": "198",
+            "name": "Freezer",
+            "type": "scene"
+          },
+          {
+            "id": "199",
+            "name": "Flamethrower",
+            "type": "scene"
+          },
+          {
+            "id": "200",
+            "name": "Teslagun",
+            "type": "scene"
+          },
+          {
+            "id": "201",
+            "name": "Pulsar",
+            "type": "scene"
+          },
+          {
+            "id": "202",
+            "name": "Blazar",
+            "type": "scene"
           }
         ]
       }

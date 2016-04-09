@@ -1,12 +1,27 @@
-abstract class AbstractWeapon implements IAttribute {
+abstract class AbstractWeapon extends Sup.Behavior implements IAttribute{
     
     public ctrl : BaseController;
+    protected inventory : PlayerInventory;
     
-    protected name : string;
-    protected ammo : string;
+    public name   : string;
+    public ammo   : string;
+    public conso  : number =  0;
+    public rate   : number = 10; // number of fire possible per second
     
-    public init( controller : BaseController ){
+    protected timer   : number;
+    protected emitter : Sup.Actor;
+    protected effect  : Effect;
+    
+    public awake(){
+        this.rate  = Sup.Game.getFPS() / this.rate;
+        this.timer = 0;
+        this.effect = this.actor.getChild("effect").getBehavior(Effect);
+    }
+    public init( controller : BaseController, emitter? : Sup.Actor ){
         this.ctrl = controller;
+        if( this.ctrl instanceof PlayerController ){
+            this.inventory = (<PlayerController>this.ctrl).inventory;
+        }
     }
     
     public get Name() : string{
@@ -16,20 +31,23 @@ abstract class AbstractWeapon implements IAttribute {
         return this.ammo;
     }
     
-    // set the model of the gun and put it at the right location
-    /*public setGunModel( modelPath : string, anchorPath : string, rootPath : string = null ){
-        let root = rootPath == null ? this.ctrl.actor : Sup.getActor(rootPath);
-        // anchor to attach our weapon model to
-        let anchor = root.getChild(anchorPath);
-        
+    public update(){
+        // if the counters are over 0, we decrement the counter
+        if( this.timer > 0 ) --this.timer;
     }
-    public abstract setFlareModel      ( path : string, color : string );
-    public abstract setProjectileModel ( path : string, color : string );
-    public abstract setImpactModel     ( path : string, color : string );*/
-    
-    public update() {
-        
+    protected resetTimer(){
+        this.timer = this.rate;
     }
     
-    public abstract fire();
+    public abstract fire  (fire : IFireInput);
+    
+    public removeAmmo() : boolean {
+        // if the character has an inventory
+        if(this.inventory != null){
+            // we try to remove ammo
+            // if we cannot remove ammo, we stop right here
+            if(!this.inventory.removeAmmo(this.ammo, this.conso)) return false;
+        } // we have removed ammo if necessary
+        return true;
+    }
 }

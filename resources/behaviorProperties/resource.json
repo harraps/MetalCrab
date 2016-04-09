@@ -8,6 +8,10 @@
         {
           "name": "keyboard",
           "type": "string"
+        },
+        {
+          "name": "armsPath",
+          "type": "string"
         }
       ]
     },
@@ -66,27 +70,10 @@
       "properties": []
     },
     "Projectile": {
-      "scriptId": "116",
-      "line": 0,
-      "parentBehavior": null,
-      "properties": [
-        {
-          "name": "speed",
-          "type": "number"
-        },
-        {
-          "name": "damage",
-          "type": "number"
-        },
-        {
-          "name": "timer",
-          "type": "number"
-        },
-        {
-          "name": "impact",
-          "type": "string"
-        }
-      ]
+      "scriptId": "184",
+      "line": 1,
+      "parentBehavior": "AbstractProjectile",
+      "properties": []
     },
     "Explosion": {
       "scriptId": "117",
@@ -197,6 +184,132 @@
         {
           "name": "path",
           "type": "string"
+        }
+      ]
+    },
+    "AbstractWeapon": {
+      "scriptId": "115",
+      "line": 0,
+      "parentBehavior": null,
+      "properties": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "ammo",
+          "type": "string"
+        },
+        {
+          "name": "conso",
+          "type": "number"
+        },
+        {
+          "name": "rate",
+          "type": "number"
+        }
+      ]
+    },
+    "BouncingProjectile": {
+      "scriptId": "184",
+      "line": 56,
+      "parentBehavior": "Projectile",
+      "properties": []
+    },
+    "AbstractProjectile": {
+      "scriptId": "116",
+      "line": 9,
+      "parentBehavior": null,
+      "properties": [
+        {
+          "name": "speed",
+          "type": "number"
+        },
+        {
+          "name": "damage",
+          "type": "number"
+        },
+        {
+          "name": "timer",
+          "type": "number"
+        },
+        {
+          "name": "force",
+          "type": "number"
+        },
+        {
+          "name": "impact",
+          "type": "string"
+        }
+      ]
+    },
+    "Firearm": {
+      "scriptId": "183",
+      "line": 1,
+      "parentBehavior": "AbstractWeapon",
+      "properties": [
+        {
+          "name": "projectile",
+          "type": "string"
+        }
+      ]
+    },
+    "AutoFirearm": {
+      "scriptId": "183",
+      "line": 43,
+      "parentBehavior": "Firearm",
+      "properties": []
+    },
+    "Grenade": {
+      "scriptId": "185",
+      "line": 0,
+      "parentBehavior": "AbstractProjectile",
+      "properties": [
+        {
+          "name": "upward",
+          "type": "number"
+        }
+      ]
+    },
+    "Shotgun": {
+      "scriptId": "186",
+      "line": 0,
+      "parentBehavior": "AbstractWeapon",
+      "properties": [
+        {
+          "name": "damage",
+          "type": "number"
+        },
+        {
+          "name": "distance",
+          "type": "number"
+        },
+        {
+          "name": "pellets",
+          "type": "number"
+        },
+        {
+          "name": "spread",
+          "type": "number"
+        },
+        {
+          "name": "force",
+          "type": "number"
+        },
+        {
+          "name": "impact",
+          "type": "string"
+        }
+      ]
+    },
+    "Effect": {
+      "scriptId": "188",
+      "line": 0,
+      "parentBehavior": null,
+      "properties": [
+        {
+          "name": "dissipation",
+          "type": "number"
         }
       ]
     }

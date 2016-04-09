@@ -1,5 +1,6 @@
 abstract class WeaponManager {
     
+    public static maxAmmo : number = 1000;
     public static ammos : string[] = [
         "bullet",
         "explosive",
@@ -12,7 +13,7 @@ abstract class WeaponManager {
         //"hook","knife",
         
         "rifle","shotgun","sniper","machinegun","grenader","cannon",
-        "freezer","flamethrower","telsagun",
+        "freezer","flamethrower","teslagun",
         
         "pulsar","blazar"
     ];

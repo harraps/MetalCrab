@@ -12,7 +12,7 @@ class InputManager {
         
         // arms
         "fire1"  ,"fire2"  ,"fire3",
-        "reload1","reload2",
+        //"reload1","reload2",
         
         // interactions
         "switchUp","switchDown",
@@ -51,8 +51,8 @@ class InputManager {
         this.mouse["fire1"] = 0;
         this.mouse["fire2"] = 1;
         this.mouse["fire3"] = 2;
-        this.keys1["reload1"] = "Q";
-        this.keys1["reload2"] = "E";
+        //this.keys1["reload1"] = "Q";
+        //this.keys1["reload2"] = "E";
         
         // interaction controls
         this.mouse["switchUp"  ] = 5;
@@ -68,7 +68,7 @@ class InputManager {
             case "AZERTY": // French
                 this.keys1["forward"] = "Z";
                 this.keys1["left"   ] = "Q";
-                this.keys1["reload1"] = "A";
+                //this.keys1["reload1"] = "A";
                 break;
             case "QZERTY": // Italian
                 this.keys1["forward"] = "Z";

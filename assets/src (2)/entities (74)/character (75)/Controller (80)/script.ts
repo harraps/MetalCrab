@@ -19,13 +19,7 @@ abstract class CharacterController extends BaseController {
     public crounchHeight : number = 0.9; // height of the player when crounched
     public crounchSpeed  : number = 5;   // the speed of the player when crounched
     
-    protected collider : CANNON.Cylinder;
-    public get Collider() : CANNON.Cylinder {
-        return this.collider;
-    }
-    public get Vertices() : CANNON.Vec3[] {
-        return this.collider.vertices;
-    }
+    public collider : CANNON.Cylinder;
     
     // we keep track of the vertices at the center of the collider
     private centerVertices : CANNON.Vec3[];
@@ -42,7 +36,7 @@ abstract class CharacterController extends BaseController {
         return this.centerVertices[1];
     }
     
-    awake() {
+    public awake() {
         super.awake();
         
         // we recalculate each attributes based on time
@@ -76,10 +70,8 @@ abstract class CharacterController extends BaseController {
         // we initialize each module of the character then
     }
     
-    update(){
+    public update(){
         super.update();
-        
-        
     }
     
     // this function allow us to change the height of the collider (for crounching)
@@ -94,7 +86,30 @@ abstract class CharacterController extends BaseController {
     public deleteCharacter(){
         // we remove the ground module from the list
         GAME.level.removeGroundModule(this.ground);
-        
+    }
+    
+    // this function can be used for ground or ceilling detection
+    public static checkCollision( ray : CANNON.Ray, vertice : CANNON.Vec3, angle : number = null,  padding_contact : number = -0.5, padding_emit : number = 0.1 ) : boolean{
+        vertice = vertice.clone();
+        let contact = vertice.clone();
+        // we add padding to both vector
+        vertice.y += padding_emit;
+        contact.y += padding_contact;
+        // we perform the raycast
+        ray.intersectWorld( GAME.level.World, Util.createIRay( vertice, contact ) );
+        // if we didn't specified an angle
+        if( angle == null ){
+            return ray.hasHit;
+        }else{
+            // if the raycast has hit
+            if( ray.hasHit ){
+                // we compare the hit normal to the vector up
+                let normal = Util.getSupVec(ray.result.hitNormalWorld).angleTo(Sup.Math.Vector3.up());
+                // if the angle from the normal to the vector up is lower than the angle we gave
+                return(normal < angle);
+            }
+        }
+        return false;
     }
 
 }

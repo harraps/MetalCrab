@@ -9,21 +9,12 @@ abstract class BaseController extends Sup.Behavior {
     // attributes Look
     public sensibility : number = 0.5; // sensibility of the mouse
     
-    protected body     : CANNON.Body;
-    protected anchor   : Sup.Actor;
-    protected head     : Sup.Actor;
-    
-    public get Body() : CANNON.Body {
-        return this.body;
-    }
-    public get Anchor() : Sup.Actor {
-        return this.anchor;
-    }
-    public get Head() : Sup.Actor {
-        return this.head;
-    }
+    public body     : CANNON.Body;
+    public anchor   : Sup.Actor;
+    public head     : Sup.Actor;
+    public emitter1 : Sup.Actor;
 
-    awake() {
+    public awake() {
         // we recalculate each attributes based on time
         this.sensibility *= Util.deltaTime;
         
@@ -32,10 +23,7 @@ abstract class BaseController extends Sup.Behavior {
         this.anchor = this.actor.getChild("anchor");
         this.head   = this.actor.getChild("head");
     }
-
-    update() {
-        
-    }
+    public update() {}
 }
 
 interface IAttribute {

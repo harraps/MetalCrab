@@ -2,6 +2,8 @@
 // http://algoholic.eu/unity3d-indie-free-portal-effect-project-sources/
 
 declare let window;
+declare let SupEngine;
+//SupEngine.THREE;
 
 // we add a scripts from outside sources
 (function (){

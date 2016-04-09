@@ -25,7 +25,7 @@ class CharacterMove implements IAttribute {
         let move  = this.ctrl.input.getMove();
         
         // we recover the velocity of the player
-        let oldVel = this.ctrl.Body.velocity;
+        let oldVel = this.ctrl.body.velocity;
         let newVel = new CANNON.Vec3();
         
         // we calculate the new velocity based on the inputs of the player
@@ -61,6 +61,6 @@ class CharacterMove implements IAttribute {
             newVel.z = newVel.z*this.airVel + oldVel.z*(1-this.airVel);
         }
         // we apply the calculated velocity to the player
-        this.ctrl.Body.velocity = newVel;
+        this.ctrl.body.velocity = newVel;
     }
 }

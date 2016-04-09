@@ -16,7 +16,7 @@ class CharacterCrounch implements IAttribute {
     public init( controller : CharacterController ){
         this.ctrl = controller;
         // we keep track of the height of the player
-        this.defaultHeight = this.ctrl.Vertices[0].z;
+        this.defaultHeight = this.ctrl.collider.vertices[0].z;
         this.height = this.defaultHeight;
     }
     
@@ -71,8 +71,8 @@ class CharacterCrounch implements IAttribute {
             return false;
         }
         // we check each uneven vertice
-        for( let i=1; i<this.ctrl.Collider.vertices.length; i += 2 ){
-            if( this.checkCeiling( ray, origin, this.ctrl.Vertices[i] ) ){
+        for( let i=1; i<this.ctrl.collider.vertices.length; i += 2 ){
+            if( this.checkCeiling( ray, origin, this.ctrl.collider.vertices[i] ) ){
                 // we found atleast one contact, we don't need to check the other contact points
                 return false;
             }
@@ -87,7 +87,7 @@ class CharacterCrounch implements IAttribute {
         contact.y += vertice.z;
         contact.z -= vertice.y;
         // we check for collisions with the ground
-        if( Util.checkCollision( ray, contact, null, this.height - this.defaultHeight, -0.1 ) ){
+        if( CharacterController.checkCollision( ray, contact, null, this.height - this.defaultHeight, -0.1 ) ){
             // we found at least one contact point, we don't need to check the others
             return true;
         }

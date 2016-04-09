@@ -16,6 +16,8 @@ class Level {
     
     // once we loaded a new level, we must call this constructor
     public constructor(){
+        // we create a new cannonWorld to clear all old bodies
+        Sup.Cannon.resetWorld();
         // we recover the cannon world object
         this.world = Sup.Cannon.getWorld();
         this.world.gravity.set( 0, -6000/Sup.Game.getFPS(), 0 );

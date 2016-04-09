@@ -11,7 +11,7 @@ class PlayerWall implements IAttribute {
     public init( controller : PlayerController ) {
         this.ctrl = controller;
         this.walled = false;
-        this.ctrl.Body.addEventListener("collide",(event) =>{
+        this.ctrl.body.addEventListener("collide",(event) =>{
             // event has the following attributes:
             // type    : string
             // body    : CANNON.Body
@@ -57,7 +57,7 @@ class PlayerWall implements IAttribute {
         let ray = new CANNON.Ray();
         for( let vert of this.ctrl.CenterVertices ){
             // we generate rays from the central axis of the player
-            let origin = this.ctrl.Body.position.vadd(vert);
+            let origin = this.ctrl.body.position.vadd(vert);
             // to the point where we should touch the wall
             let dir = origin.vadd(this.direction);
             let iray = Util.createIRay( origin, dir );
@@ -78,7 +78,7 @@ class PlayerWall implements IAttribute {
         // the player perform a jump
         this.ctrl.move.airVelocity = 0;
         // we apply the velocity
-        this.ctrl.Body.velocity = newVel;
+        this.ctrl.body.velocity = newVel;
         // the player jumped from the wall, chance are that he is not walled anymore
         this.walled = false;
         this.direction = null;

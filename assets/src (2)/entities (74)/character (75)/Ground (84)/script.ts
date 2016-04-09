@@ -35,8 +35,8 @@ class CharacterGround implements IAttribute {
             return;
         }
         // we check each even vertice
-        for( let i=0; i<this.ctrl.Vertices.length; i += 2 ){
-            if( this.checkGround( ray, origin, this.ctrl.Vertices[i] ) ){
+        for( let i=0; i<this.ctrl.collider.vertices.length; i += 2 ){
+            if( this.checkGround( ray, origin, this.ctrl.collider.vertices[i] ) ){
                 // we found atleast one contact, we don't need to check the other contact points
                 return;
             }
@@ -52,7 +52,7 @@ class CharacterGround implements IAttribute {
             let newGlobalPos = this.platform.pointToWorldFrame( this.localPos );
             let moveDistance = newGlobalPos.vsub( this.globalPos );
             // we apply the movement to the player
-            this.ctrl.Body.position = this.ctrl.Body.position.vadd( moveDistance );
+            this.ctrl.body.position = this.ctrl.body.position.vadd( moveDistance );
             
             // we calculate the rotation of the platform since the last update
             let newGlobalRot = this.platform.quaternion.mult( this.localRot );
@@ -69,11 +69,11 @@ class CharacterGround implements IAttribute {
         // if we are on a platform
         if( this.platform != null ){
             // we recover the position of the platform for the next update
-            this.globalPos = this.ctrl.Body.position;
-            this.localPos  = this.platform.pointToLocalFrame( this.ctrl.Body.position );
+            this.globalPos = this.ctrl.body.position;
+            this.localPos  = this.platform.pointToLocalFrame( this.ctrl.body.position );
             // we recover the rotation of the platform for the next update
-            this.globalRot = this.ctrl.Body.quaternion;
-            this.localRot  = this.platform.quaternion.inverse().mult( this.ctrl.Body.quaternion );
+            this.globalRot = this.ctrl.body.quaternion;
+            this.localRot  = this.platform.quaternion.inverse().mult( this.ctrl.body.quaternion );
         }
     }
     
@@ -85,7 +85,7 @@ class CharacterGround implements IAttribute {
         contact.y += vertice.z;
         contact.z -= vertice.y;
         // we check for collisions with the ground
-        if( Util.checkCollision( ray, contact, this.ctrl.steepSlope, -0.5 ) ){
+        if( CharacterController.checkCollision( ray, contact, this.ctrl.steepSlope, -0.5 ) ){
             // at least one contact returned true
             this.grounded = true;
             // if the platform we landed on is KINEMATIC

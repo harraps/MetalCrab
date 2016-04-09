@@ -12,7 +12,58 @@
             {
               "id": "2",
               "name": "head",
-              "children": [],
+              "children": [
+                {
+                  "id": "4",
+                  "name": "emitter_L",
+                  "children": [],
+                  "components": [],
+                  "position": {
+                    "x": -1,
+                    "y": -1,
+                    "z": -3
+                  },
+                  "orientation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0,
+                    "w": 1
+                  },
+                  "scale": {
+                    "x": 1,
+                    "y": 1,
+                    "z": 1
+                  },
+                  "visible": true,
+                  "layer": 0,
+                  "prefab": null
+                },
+                {
+                  "id": "3",
+                  "name": "emitter_R",
+                  "children": [],
+                  "components": [],
+                  "position": {
+                    "x": 1,
+                    "y": -1,
+                    "z": -3
+                  },
+                  "orientation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0,
+                    "w": 1
+                  },
+                  "scale": {
+                    "x": 1,
+                    "y": 1,
+                    "z": 1
+                  },
+                  "visible": true,
+                  "layer": 0,
+                  "prefab": null
+                }
+              ],
               "components": [
                 {
                   "type": "Camera",

@@ -22,13 +22,13 @@ class PlayerInput extends CharacterInput {
     public getCrounch() : boolean{
         return this.inputs["crounch"];
     }
-    public getArm1() : IArm{
-        return this.inputs["arm1"];
+    public getFire1() : IFireInput{
+        return this.inputs["fire1"];
     }
-    public getArm2() : IArm{
-        return this.inputs["arm2"];
+    public getFire2() : IFireInput{
+        return this.inputs["fire2"];
     }
-    public getFire3() : boolean{
+    public getFire3() : IFireInput{
         return this.inputs["fire3"];
     }
     public getSwitch() : number {
@@ -58,8 +58,9 @@ class PlayerInput extends CharacterInput {
         // we initialize object typed inputs holder
         this.inputs["look"] = new Sup.Math.Vector2();
         this.inputs["move"] = new Sup.Math.Vector2();
-        this.inputs["arm1"] = {};
-        this.inputs["arm2"] = {};
+        this.inputs["fire1"] = {};
+        this.inputs["fire2"] = {};
+        this.inputs["fire3"] = {};
     }
     
     public update(){
@@ -70,10 +71,10 @@ class PlayerInput extends CharacterInput {
         this.updateJump();
         this.updateArm(1);
         this.updateArm(2);
+        this.updateArm(3);
         this.updateSwitch();
         
         this.inputs["crounch"  ] = GAME.input.isInputDown("crounch");
-        this.inputs["fire3"    ] = GAME.input.wasInputJustPressed("fire3"    );
         this.inputs["use"      ] = GAME.input.wasInputJustPressed("use"      );
         this.inputs["inventory"] = GAME.input.wasInputJustPressed("inventory");
     }
@@ -119,9 +120,9 @@ class PlayerInput extends CharacterInput {
     }
     private updateArm( a : number ){
         let arm = "arm"+a;
-        this.inputs[arm].fire   = GAME.input.isInputDown("fire"+a);
-        this.inputs[arm].pulse  = GAME.input.wasInputJustPressed("fire"  +a);
-        this.inputs[arm].reload = GAME.input.wasInputJustPressed("reload"+a);
+        this.inputs[arm].fire  = GAME.input.isInputDown        ("fire"+a);
+        this.inputs[arm].pulse = GAME.input.wasInputJustPressed("fire"+a);
+        //this.inputs[arm].reload = GAME.input.wasInputJustPressed("reload"+a);
     }
     private updateSwitch(){
         this.inputs["switch"] = 0;

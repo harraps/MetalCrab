@@ -7,19 +7,7 @@ class Arms extends Sup.Behavior {
     protected handL : IHand;
     protected handR : IHand;
     
-    /*protected handL : Sup.Actor;
-    protected handR : Sup.Actor;*/
-    
-    // store the weapon models to show them when needed
-    /*protected modelsL : Sup.Actor[];
-    protected modelsR : Sup.Actor[];*/
-    
-    /*private holdL : string;
-    private holdR : string;*/
-    
     private height : number;
-    /*private angleL : number;
-    private angleR : number;*/
     
     public awake(){
         // we init each hand
